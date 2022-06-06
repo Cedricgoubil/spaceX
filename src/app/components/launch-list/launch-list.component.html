@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" scrollTracker>
   <div class="row">
     <div class="text-white col-md-8 my-4">
       <button
@@ -19,15 +19,52 @@
       </button>
     </div>
     <div class="text-white col-md-4">
-      <div class="card bg-transparent border-info my-3">
-        <div class="card-body">
-          <i class="fa-thin fa-rocket-launch"></i> Next launch in:
-        </div>
-      </div>
+      <app-upcominglaunch-list></app-upcominglaunch-list>
     </div>
     <div class="col-12">
-      <div class="row row-cols-1 row-cols-md-3">
-        <div *ngFor="let launch of allLaunches | succeedlaunch: isSucceed">
+      <div class="input-group input-group-sm my-2">
+        <span style="margin-right: -40px" class="input-group-text text-dark"
+          ><i class="fa-thin fa-search" style="color: #fb2056"></i
+        ></span>
+        <input
+          style="padding-left: 40px"
+          class="form-control"
+          type="text"
+          placeholder="Search for launch"
+          [(ngModel)]="searchTerm"
+          (keyup)="resetListToFirstPage()"
+        />
+        <button
+          class="btn bg-transparent"
+          (click)="clearInput()"
+          style="margin-left: -40px; z-index: 100; color: #000000"
+        >
+          <i class="fa-thin fa-times"></i>
+        </button>
+      </div>
+      <div class="text-white text-center mt-2">
+        <h2 *ngIf="(allLaunches | searchlaunch: searchTerm)?.length == 0">
+          No Launch found!
+        </h2>
+      </div>
+      <div *ngIf="loading" class="text-center">
+        <h5>
+          <i class="fa-thin fa-circle-notch fa-spin" style="color: red"></i>
+          Loading more recipes...
+        </h5>
+      </div>
+      <div
+        class="row row-cols-1 row-cols-md-3"
+        (scrollingFinished)="onScrollingFinished()"
+      >
+        <div
+          *ngFor="
+            let launch of allLaunches
+              | searchlaunch: searchTerm
+              | succeedlaunch: isSucceed
+          "
+          (scrollingFinished)="onScrollingFinished()"
+        >
           <div
             routerLink="/launch-details/{{ launch?.id }}"
             class="card text-white bg-transparent my-2"
@@ -45,7 +82,9 @@
               </p>
             </div>
             <div class="card-footer">
-              <small class="text-muted">{{ launch?.date_utc }}</small>
+              <small class="text-muted">{{
+                launch?.date_utc | date: "long"
+              }}</small>
             </div>
           </div>
         </div>

@@ -17,10 +17,10 @@
     <div class="collapse navbar-collapse" id="navbartoggle">
       <ul *ngIf="isLoggedIn" class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/launches">Launches</a>
+          <a class="nav-link" routerLink="/launch-list">Launches</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/crew">Crew</a>
+          <a class="nav-link" routerLink="/crew-list">Crew</a>
         </li>
       </ul>
       <ul *ngIf="isLoggedIn" class="navbar-nav mx-5">
@@ -29,7 +29,6 @@
             <i class="fal fa-power-off"></i
           ></a>
         </li>
-
         <!-- <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"

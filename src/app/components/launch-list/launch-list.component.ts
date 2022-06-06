@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
-import { SpacexdatasService } from 'src/app/services/spacexdatas.service';
+import { LaunchService } from 'src/app/services/launch.service';
 import { LaunchDto } from '../dto/launchdto';
 
 @Component({
@@ -10,19 +10,21 @@ import { LaunchDto } from '../dto/launchdto';
 export class LaunchListComponent implements OnInit {
   allLaunches!: LaunchDto[];
   isSucceed?: boolean | any;
+  searchTerm?: string | any;
+  firstPage?: number | any;
+
+  numberOfCard?: number | any;
+  loading?: boolean | any;
 
   constructor(
-    private spacexdatasService: SpacexdatasService
+    private launchService: LaunchService
   ) { }
 
   ngOnInit(): void {
-    this.spacexdatasService.getAllLaunches().then((resultData) => {
-      this.allLaunches = resultData
-
-
-
-
-    })
+    this.initAmountOfCards(this.numberOfCard);
+    // this.launchService.getAllLaunch().then((resultData) => {
+    //   this.allLaunches = resultData
+    // })
   }
 
   displaySucceededLaunches() {
@@ -30,6 +32,41 @@ export class LaunchListComponent implements OnInit {
       this.isSucceed = true;
     } else {
       this.isSucceed = false;
+    }
+  }
+
+  clearInput() {
+    this.searchTerm = '';
+  }
+
+  resetListToFirstPage() {
+    this.firstPage = 1;
+  }
+
+  clearList() {
+  }
+
+  initAmountOfCards(number: any) {
+    number = this.numberOfCard;
+    this.launchService.getAllLaunch().then((resultData) => this.allLaunches = resultData.slice(0, number));
+    number = this.numberOfCard;
+  }
+
+  onScrollingFinished() {
+    this.loadMore();
+  }
+
+  loadMore() {
+    this.numberOfCard += 9
+    console.log('loading more')
+    if (!this.loading) {
+      this.loading = true;
+      debugger
+      setTimeout(() => {
+        this.initAmountOfCards(this.numberOfCard)
+        this.loading = false;
+        debugger
+      }, 500);
     }
   }
 }

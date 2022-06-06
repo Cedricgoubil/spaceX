@@ -21,8 +21,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-import { LaunchDetailsComponent } from './components/launch-details/launch-details.component';
 import { LaunchListComponent } from './components/launch-list/launch-list.component';
+import { LaunchDetailsComponent } from './components/launch-details/launch-details.component';
+import { UpcominglaunchListComponent } from './components/upcominglaunch-list/upcominglaunch-list.component';
+import { UpcominglaunchDetailsComponent } from './components/upcominglaunch-details/upcominglaunch-details.component';
 import { CrewListComponent } from './components/crew-list/crew-list.component';
 import { CrewDetailsComponent } from './components/crew-details/crew-details.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -30,6 +32,12 @@ import { ResetpasswordComponent } from './components/resetpassword/resetpassword
 
 // Pipes
 import { SucceedLaunchFilterPipe } from './pipes/succeed-launch.pipe';
+import { SearchLaunchFilterPipe } from './pipes/search-launch.pipe';
+import { SearchCrewFilterPipe } from './pipes/search-crew.pipe';
+
+// Directives
+import { ScrollTrackerDirective } from './directives/scroll-tracker.directive';
+
 
 @NgModule({
   declarations: [
@@ -40,11 +48,16 @@ import { SucceedLaunchFilterPipe } from './pipes/succeed-launch.pipe';
     RegisterComponent,
     LaunchListComponent,
     LaunchDetailsComponent,
+    UpcominglaunchListComponent,
+    UpcominglaunchDetailsComponent,
     CrewListComponent,
     CrewDetailsComponent,
     FooterComponent,
     ResetpasswordComponent,
     SucceedLaunchFilterPipe,
+    SearchLaunchFilterPipe,
+    SearchCrewFilterPipe,
+    ScrollTrackerDirective
 
   ],
   imports: [

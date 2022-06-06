@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { SpacexdatasService } from 'src/app/services/spacexdatas.service';
 import { LaunchDto } from '../dto/launchdto';
+import { LaunchService } from 'src/app/services/launch.service';
 
 @Component({
   selector: 'app-launch-details',
@@ -16,12 +16,12 @@ export class LaunchDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private location: Location,
-    private spacexdatasService: SpacexdatasService
+    private launchService: LaunchService
   ) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    this.spacexdatasService.getLaunch(this.id).then((resultData) => {
+    this.launchService.getLaunch(this.id).then((resultData) => {
       this.launch = resultData
       console.log(this.launch)
     }

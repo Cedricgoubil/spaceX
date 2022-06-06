@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { SpacexdatasService } from 'src/app/services/spacexdatas.service';
+import { CrewService } from 'src/app/services/crew.service';
 import { CrewDto } from '../dto/CrewDto';
 
 @Component({
@@ -10,14 +10,27 @@ import { CrewDto } from '../dto/CrewDto';
 export class CrewListComponent implements OnInit {
   allCrewMembers!: CrewDto[];
   isSucceed?: boolean | any;
+  searchTerm?: string | any;
+  firstPage?: number | any;
 
   constructor(
-    private spacexdatasService: SpacexdatasService
+    private crewService: CrewService
   ) { }
 
   ngOnInit(): void {
-    this.spacexdatasService.getAllCrewMembers().then((resultData) => {
+    this.crewService.getAllCrewMembers().then((resultData) => {
       this.allCrewMembers = resultData
     })
+  }
+
+  clearInput() {
+    this.searchTerm = '';
+  }
+
+  resetListToFirstPage() {
+    this.firstPage = 1;
+  }
+
+  clearList() {
   }
 }
