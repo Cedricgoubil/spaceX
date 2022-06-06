@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="row row-cols-1 row-cols-md-3">
+        <div *ngFor="let crewMember of allCrewMembers">
+          <div
+            routerLink="/crewMember-details/{{ crewMember?.id }}"
+            class="card text-white bg-transparent my-2"
+          >
+            <img
+              src="{{ crewMember?.image }}"
+              class="card-img-top"
+              alt="{{ crewMember?.name }}"
+            />
+            <div class="card-body">
+              <h3 class="card-title">{{ crewMember?.name }}</h3>
+              <h5 class="text-muted">Agency {{ crewMember?.agency }}</h5>
+              <p *ngIf="crewMember?.status" style="color: #1ea97c">Active</p>
+              <p *ngIf="!crewMember?.status" style="color: #ff5757">
+                Not Active
+              </p>
+              <div style="display: flex; justify-content: flex-end">
+                <a href="{{ crewMember?.wikipedia }}" target="_blank">
+                  <button type="button" class="btn btn-dark">Wikipedia</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

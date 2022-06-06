@@ -1,0 +1,9 @@
+.card:hover {
+  cursor: pointer;
+}
+
+.card-img-top {
+  min-height: 500px;
+  max-height: 500px;
+  object-fit: contain;
+}

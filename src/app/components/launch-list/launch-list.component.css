@@ -1,0 +1,22 @@
+.card {
+  border-radius: 20px;
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.card-img-top {
+  padding: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  max-width:100%;
+  min-height: 300px;
+  max-height: 300px;
+  object-fit: contain;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+}

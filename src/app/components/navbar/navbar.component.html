@@ -1,0 +1,55 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a routerLink="/" class="navbar-brand ms-4"
+      ><img src="/assets/img/spacex-logo.png" width="180"
+    /></a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbartoggle"
+      aria-controls="navbartoggle"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbartoggle">
+      <ul *ngIf="isLoggedIn" class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/launches">Launches</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/crew">Crew</a>
+        </li>
+      </ul>
+      <ul *ngIf="isLoggedIn" class="navbar-nav mx-5">
+        <li class="nav-item">
+          <a class="nav-link" title="logout" (click)="onLogoutClick()">
+            <i class="fal fa-power-off"></i
+          ></a>
+        </li>
+
+        <!-- <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          ></a>
+          <div class="dropdown-menu dropdown-menu-end">
+            <a
+              *ngIf="isLoggedIn"
+              class="dropdown-item logout"
+              title="logout"
+              (click)="onLogoutClick()"
+            >
+              <i class="fal fa-power-off"></i> Logout</a
+            >
+          </div>
+        </li> -->
+      </ul>
+    </div>
+  </div>
+</nav>

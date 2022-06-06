@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+    <div class="text-white col-md-8 my-4">
+      <button
+        *ngIf="!isSucceed"
+        (click)="displaySucceededLaunches()"
+        type="button"
+        class="btn btn-outline-success me-2"
+      >
+        Succeed Launches
+      </button>
+      <button
+        *ngIf="isSucceed"
+        (click)="displaySucceededLaunches()"
+        type="button"
+        class="btn btn-success"
+      >
+        Succeed Launches
+      </button>
+    </div>
+    <div class="text-white col-md-4">
+      <div class="card bg-transparent border-info my-3">
+        <div class="card-body">
+          <i class="fa-thin fa-rocket-launch"></i> Next launch in:
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="row row-cols-1 row-cols-md-3">
+        <div *ngFor="let launch of allLaunches | succeedlaunch: isSucceed">
+          <div
+            routerLink="/launch-details/{{ launch?.id }}"
+            class="card text-white bg-transparent my-2"
+            [style.border-color]="launch?.success ? '#1ea97c' : '#ff5757'"
+          >
+            <img
+              src="{{ launch?.links?.patch?.large }}"
+              class="card-img-top"
+              alt="{{ launch?.name }}"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ launch?.name }}</h5>
+              <p class="card-text">
+                {{ launch?.details }}
+              </p>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted">{{ launch?.date_utc }}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

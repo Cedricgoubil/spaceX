@@ -1,0 +1,45 @@
+<div class="container mx-4">
+  <div class="row text-white">
+    <div class="col-12 mt-4">
+      <div
+        (click)="navigateBack()"
+        class="btn btn-sm btn-dark"
+        title="dashboard"
+      >
+        <i class="fa-thin fa-chevron-left"></i>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <h1 class="text-center">
+        {{ launch?.name }}
+      </h1>
+      <h6 class="text-center">Flight #{{ launch?.flight_number }}</h6>
+      <p>{{ launch?.flight_number }}</p>
+    </div>
+    <div class="col-md-4">
+      <img
+        src="{{ launch?.links?.patch?.large }}"
+        title="{{ launch?.name | titlecase }}"
+        onerror="this.src='.../../../assets/img/noimage.png'"
+      />
+      <div class="text-center mt-3">
+        <h1 *ngIf="launch?.success" style="color: #1ea97c">Success</h1>
+        <h1 *ngIf="!launch?.success" style="color: #ff5757">Failed</h1>
+      </div>
+      <div *ngIf="!launch?.success">
+        <p>Cause of failures:</p>
+        <ul>
+          <li *ngIf="launch?.failures?.[0]?.time ">
+            Time after launch {{ launch?.failures?.[0]?.time }}
+          </li>
+          <li *ngIf="launch?.failures?.[0]?.altitude ">
+            Altitude {{ launch?.failures?.[0]?.altitude }}
+          </li>
+          <li *ngIf="launch?.failures?.[0]?.reason ">
+            Reason {{ launch?.failures?.[0]?.reason | titlecase }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
