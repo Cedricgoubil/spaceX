@@ -18,6 +18,10 @@ export class LaunchListComponent implements OnInit {
   ngOnInit(): void {
     this.spacexdatasService.getAllLaunches().then((resultData) => {
       this.allLaunches = resultData
+
+
+
+
     })
   }
 
