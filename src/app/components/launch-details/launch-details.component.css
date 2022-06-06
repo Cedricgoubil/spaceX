@@ -1,8 +1,17 @@
-img {
+.spacex-launch-picture {
   object-fit: cover;
   min-height: 220px;
   width: 100%;
   border: 0.5px solid #ffffff;
   border-radius: 20px;
   padding: 15px;
+}
+
+.imgTest {
+  width: 60px;
+  height: 60px;
+  margin-top: 10px;
+  border: 1px solid #ffffff;
+  object-fit: cover;
+  border-radius: 50%;
 }

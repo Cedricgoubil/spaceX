@@ -3,6 +3,10 @@ export class LaunchDto {
   flight_number?: number;
   name?: string;
   details?: string;
+  crew?: string[];
+  ships?: string[];
+  capsules?: string[];
+  payloads?: string[];
   date_utc?: Date | any;
   date_unix?: Date | any;
   date_local?: Date | any;
@@ -21,6 +25,10 @@ export class LaunchDto {
     patch?: {
       small: string,
       large: string,
+    },
+    flickr?: {
+      small: string[],
+      original: string[]
     },
   }
 }

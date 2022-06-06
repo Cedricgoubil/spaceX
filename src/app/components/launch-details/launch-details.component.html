@@ -9,19 +9,65 @@
         <i class="fa-thin fa-chevron-left"></i>
       </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-7">
       <h1 class="text-center">
         {{ launch?.name }}
       </h1>
       <h6 class="text-center">Flight #{{ launch?.flight_number }}</h6>
-      <p>{{ launch?.flight_number }}</p>
+
+      <div class="card bg-transparent">
+        <div class="card-header">Fight Details</div>
+        <div class="card-body">
+          {{ launch?.details }}
+        </div>
+      </div>
+      <div class="card bg-transparent">
+        <div class="card-header">Crew members</div>
+        <div class="card-body">
+          {{ launch?.crew }}
+        </div>
+      </div>
+      <div class="card bg-transparent">
+        <div class="card-header">Ships</div>
+        <div class="card-body">
+          {{ launch?.ships }}
+        </div>
+      </div>
+      <div class="card bg-transparent">
+        <div class="card-header">Capsules</div>
+        <div class="card-body">
+          {{ launch?.capsules }}
+        </div>
+      </div>
+      <div class="card bg-transparent">
+        <div class="card-header">Payloads</div>
+        <div class="card-body">
+          {{ launch?.payloads }}
+        </div>
+      </div>
     </div>
     <div class="col-md-4">
-      <img
-        src="{{ launch?.links?.patch?.large }}"
-        title="{{ launch?.name | titlecase }}"
-        onerror="this.src='.../../../assets/img/noimage.png'"
-      />
+      <ng-container *ngIf="launch?.links?.flickr?.original?.length">
+        <img
+          class="spacex-launch-picture"
+          src="{{ launch?.links?.flickr?.original }}"
+          title="{{ launch?.name | titlecase }}"
+          onerror="this.src='.../../../assets/img/noimage.png'"
+      /></ng-container>
+
+      <ng-container
+        *ngIf="
+          launch?.links?.patch?.large &&
+          !launch?.links?.flickr?.original?.length
+        "
+      >
+        <img
+          class="spacex-launch-picture"
+          src="{{ launch?.links?.patch?.large }}"
+          title="{{ launch?.name | titlecase }}"
+          onerror="this.src='.../../../assets/img/noimage.png'"
+      /></ng-container>
+
       <div class="text-center mt-3">
         <h1 *ngIf="launch?.success" style="color: #1ea97c">Success</h1>
         <h1 *ngIf="!launch?.success" style="color: #ff5757">Failed</h1>
@@ -39,6 +85,14 @@
             Reason {{ launch?.failures?.[0]?.reason | titlecase }}
           </li>
         </ul>
+      </div>
+    </div>
+    <div class="col-md-1">
+      <div style="display: flex; flex-direction: column">
+        <img class="imgTest" src="../../../assets/img/yellow.jpg" />
+        <img class="imgTest" src="../../../assets/img/yellow.jpg" />
+        <img class="imgTest" src="../../../assets/img/yellow.jpg" />
+        <img class="imgTest" src="../../../assets/img/yellow.jpg" />
       </div>
     </div>
   </div>

@@ -77,13 +77,13 @@
             />
             <div class="card-body">
               <h5 class="card-title">{{ launch?.name }}</h5>
-              <p class="card-text">
-                {{ launch?.details }}
-              </p>
+              <h6 class="card-text">
+                Rocket <small class="text-muted">{{ launch?.rocket }}</small>
+              </h6>
             </div>
             <div class="card-footer">
               <small class="text-muted">{{
-                launch?.date_utc | date: "long"
+                launch?.date_utc | date: "full"
               }}</small>
             </div>
           </div>
