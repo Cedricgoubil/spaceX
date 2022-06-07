@@ -3,10 +3,6 @@
     <div class="text-center text-muted">
       <h1 class="mt-5">Sign in</h1>
     </div>
-    <audio autoplay>
-      <source src="../../../assets/topgun.mp3" type="audio/mpeg" />
-      Your browser does not support the audio element.
-    </audio>
     <form (submit)="onSubmit()">
       <div class="form-group mb-4 text-muted">
         <i class="fa-thin fa-at me-2"></i>
@@ -66,18 +62,7 @@
         </div>
       </div>
       <div class="d-grid gap-2 mb-4">
-        <div class="loginBtn">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-          <input
-            type="submit"
-            value="Ready for Take Off"
-            class="btn btn-sm"
-            style="color: #e6e6e6"
-          />
-        </div>
+        <input type="submit" value="Ready for Take Off" class="btn btn-sm" />
         <a routerLink="/resetpassword" class="text-end text-muted"
           ><small>Forgot your password? </small></a
         >
@@ -91,7 +76,7 @@
         class="btn btn-sm"
         style="background-color: #000000; color: #e6e6e6"
       >
-        Register
+        Go To Register
       </a>
     </div>
   </main>

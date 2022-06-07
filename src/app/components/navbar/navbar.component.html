@@ -17,10 +17,14 @@
     <div class="collapse navbar-collapse" id="navbartoggle">
       <ul *ngIf="isLoggedIn" class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/launch-list">Launches</a>
+          <a class="nav-link" routerLink="/launch-list"
+            ><i class="fa-thin fa-rocket-launch"></i> Launches</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/crew-list">Crew</a>
+          <a class="nav-link" routerLink="/crew-list"
+            ><i class="fa-thin fa-user-astronaut"></i> Crew</a
+          >
         </li>
       </ul>
       <ul *ngIf="isLoggedIn" class="navbar-nav mx-5">
