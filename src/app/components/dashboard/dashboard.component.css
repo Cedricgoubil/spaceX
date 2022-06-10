@@ -1,5 +1,9 @@
 video {
-  min-height: 100vh;
+  object-fit: cover;
+  width: 100vw;
+  height: 90vh;
+  position: fixed;
+  left: 0;
 }
 
 .launch {
@@ -185,9 +189,7 @@ video {
 }
 
 @media (max-width: 767px) {
-  video {
-      display: none;
-  }
+
 
   .launch {
     top: 35%;
