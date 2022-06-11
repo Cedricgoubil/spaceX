@@ -1,28 +1,7 @@
 <div class="container" scrollTracker>
   <div class="row">
-    <div class="text-white col-md-8 my-4">
-      <button
-        *ngIf="!isSucceed"
-        (click)="displaySucceededLaunches()"
-        type="button"
-        class="btn btn-outline-success me-2"
-      >
-        Succeed Launches
-      </button>
-      <button
-        *ngIf="isSucceed"
-        (click)="displaySucceededLaunches()"
-        type="button"
-        class="btn btn-success"
-      >
-        Succeed Launches
-      </button>
-    </div>
-    <div class="text-white col-md-4">
-      <app-upcominglaunch-list></app-upcominglaunch-list>
-    </div>
-    <div class="col-12">
-      <div class="input-group input-group-sm my-2">
+    <div class="text-white col-md-8">
+      <div class="input-group input-group-sm my-5">
         <span style="margin-right: -40px" class="input-group-text text-dark"
           ><i class="fa-thin fa-search" style="color: #fb2056"></i
         ></span>
@@ -42,7 +21,66 @@
           <i class="fa-thin fa-times"></i>
         </button>
       </div>
-      <div class="text-white text-center mt-2">
+      <div class="d-grid gap-2">
+        <div class="btn-group" role="group">
+          <button
+            *ngIf="!isSucceed"
+            (click)="displaySucceededLaunches()"
+            type="button"
+            class="btn btn-outline-success me-2"
+          >
+            <i class="fa-thin fa-circle-check"></i> Succeed
+          </button>
+          <button
+            *ngIf="isSucceed"
+            (click)="displaySucceededLaunches()"
+            type="button"
+            class="btn btn-success me-2"
+          >
+            <i class="fa-thin fa-circle-check"></i> Succeed
+          </button>
+
+          <button
+            *ngIf="!isFailed"
+            (click)="displayFailedLaunches()"
+            type="button"
+            class="btn btn-outline-danger me-2"
+          >
+            <i class="fa-thin fa-circle-xmark"></i> Failed
+          </button>
+          <button
+            *ngIf="isFailed"
+            (click)="displayFailedLaunches()"
+            type="button"
+            class="btn btn-danger me-2"
+          >
+            <i class="fa-thin fa-circle-xmark"></i> Failed
+          </button>
+
+          <button
+            *ngIf="!isUpcoming"
+            (click)="displayUpcomingLaunches()"
+            type="button"
+            class="btn btn-outline-info"
+          >
+            <i class="fa-thin fa-hourglass"></i> Upcoming
+          </button>
+          <button
+            *ngIf="isUpcoming"
+            (click)="displayUpcomingLaunches()"
+            type="button"
+            class="btn btn-info"
+          >
+            <i class="fa-thin fa-hourglass"></i> Upcoming
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="text-white col-md-4">
+      <app-upcominglaunch-list></app-upcominglaunch-list>
+    </div>
+    <div class="col-12">
+      <div class="text-white text-center">
         <h2 *ngIf="(allLaunches | searchlaunch: searchTerm)?.length == 0">
           No Launch found!
         </h2>
@@ -62,18 +100,39 @@
             let launch of allLaunches
               | searchlaunch: searchTerm
               | succeedlaunch: isSucceed
+              | failedlaunch: isFailed
+              | upcominglaunch: isUpcoming
           "
           (scrollingFinished)="onScrollingFinished()"
         >
           <div
             routerLink="/launch-details/{{ launch?.id }}"
             class="card text-white bg-transparent my-2"
-            [style.border-color]="launch?.success ? '#1ea97c' : '#ff5757'"
+            [ngStyle]="{
+              'border-color': getMissionStatus(launch?.success)
+            }"
           >
+            <div class="card-img-overlay">
+              <div style="display: flex; justify-content: flex-end">
+                <ng-container *ngIf="launch?.success">
+                  <i class="fa-thin fa-circle-check" style="color: #1ea97c"></i>
+                </ng-container>
+                <ng-container
+                  *ngIf="!launch?.success && launch?.success != null"
+                >
+                  <i class="fa-thin fa-circle-xmark" style="color: #ff5757"></i>
+                </ng-container>
+                <ng-container *ngIf="launch?.upcoming">
+                  <i class="fa-thin fa-hourglass" style="color: #696cff"></i>
+                </ng-container>
+              </div>
+            </div>
+
             <img
-              src="{{ launch?.links?.patch?.large }}"
               class="card-img-top"
+              src="{{ launch?.links?.patch?.large }}"
               alt="{{ launch?.name }}"
+              onError="this.src='/assets/img/spacex-noimage.jpg';"
             />
             <div class="card-body">
               <h5 class="card-title">{{ launch?.name }}</h5>

@@ -87,6 +87,17 @@
         </ul>
       </div>
     </div>
+
+    <!-- allCrewMembers {{ allCrewMembers | json }} -->
+
+    <ng-container *ngFor="let crewMembers of allCrewMembers">
+      <div *ngIf="launch?.crew[0] === crewMembers.id">
+        <img class="imgTest" src="{{ crewMembers?.image }}" />
+        <p style="color: red">
+          {{ crewMembers?.name | titlecase }} {{ crewMembers?.id }}
+        </p>
+      </div>
+    </ng-container>
     <!-- <div class="col-md-1">
       <div style="display: flex; flex-direction: column">
         <img class="imgTest" src="../../../assets/img/yellow.jpg" />
@@ -95,9 +106,12 @@
         <img class="imgTest" src="../../../assets/img/yellow.jpg" />
       </div>
     </div> -->
-
-    <ng-container *ngFor="let crewMembers of allCrewMembers">
-      <p style="color: blue">{{ crewMembers?.name | titlecase }}</p>
-    </ng-container>
+    <!-- <ng-container *ngFor="let crewMembers of allCrewMembers">
+      <div class="card" *ngIf="getFlyingCrewForLaunch(crewMembers.id)">
+        <p style="color: red">
+          {{ crewMembers?.name | titlecase }} {{ crewMembers?.id }}
+        </p>
+      </div>
+    </ng-container> -->
   </div>
 </div>

@@ -10,8 +10,11 @@ import { LaunchDto } from '../dto/launchdto';
 export class LaunchListComponent implements OnInit {
   allLaunches!: LaunchDto[];
   isSucceed?: boolean | any;
+  isFailed?: boolean | any;
+  isUpcoming?: boolean | any;
   searchTerm?: string | any;
   firstPage?: number | any;
+
 
   numberOfCard?: number | any;
   loading?: boolean | any;
@@ -30,8 +33,30 @@ export class LaunchListComponent implements OnInit {
   displaySucceededLaunches() {
     if (!this.isSucceed) {
       this.isSucceed = true;
+      this.isFailed = false;
+      this.isUpcoming = false;
     } else {
       this.isSucceed = false;
+    }
+  }
+
+  displayFailedLaunches() {
+    if (!this.isFailed) {
+      this.isFailed = true;
+      this.isSucceed = false;
+      this.isUpcoming = false;
+    } else {
+      this.isFailed = false;
+    }
+  }
+
+  displayUpcomingLaunches() {
+    if (!this.isUpcoming) {
+      this.isUpcoming = true;
+      this.isSucceed = false;
+      this.isFailed = false;
+    } else {
+      this.isUpcoming = false;
     }
   }
 
@@ -44,6 +69,18 @@ export class LaunchListComponent implements OnInit {
   }
 
   clearList() {
+  }
+
+  getMissionStatus(status: any) {
+    switch (status) {
+      case true:
+        return '#1ea97c';
+      case false:
+        return '#ff5757';
+      case null:
+        return '#696cff'
+    }
+    return
   }
 
   initAmountOfCards(number: any) {

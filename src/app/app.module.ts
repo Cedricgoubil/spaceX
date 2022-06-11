@@ -32,12 +32,13 @@ import { ResetpasswordComponent } from './components/resetpassword/resetpassword
 
 // Pipes
 import { SucceedLaunchFilterPipe } from './pipes/succeed-launch.pipe';
+import { FailedLaunchFilterPipe } from './pipes/failed-launch.pipe';
+import { UpcomingLaunchFilterPipe } from './pipes/upcoming-launch.pipe';
 import { SearchLaunchFilterPipe } from './pipes/search-launch.pipe';
 import { SearchCrewFilterPipe } from './pipes/search-crew.pipe';
 
 // Directives
 import { ScrollTrackerDirective } from './directives/scroll-tracker.directive';
-
 
 @NgModule({
   declarations: [
@@ -55,6 +56,8 @@ import { ScrollTrackerDirective } from './directives/scroll-tracker.directive';
     FooterComponent,
     ResetpasswordComponent,
     SucceedLaunchFilterPipe,
+    FailedLaunchFilterPipe,
+    UpcomingLaunchFilterPipe,
     SearchLaunchFilterPipe,
     SearchCrewFilterPipe,
     ScrollTrackerDirective

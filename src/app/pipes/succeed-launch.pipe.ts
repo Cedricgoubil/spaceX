@@ -10,7 +10,7 @@ export class SucceedLaunchFilterPipe implements PipeTransform {
       return succeedLaunchFilterTransform;
     }
     return succeedLaunchFilterTransform.filter(
-      succeedLaunchesList => succeedLaunchesList.success === true
+      succeedLaunchList => succeedLaunchList.success === true
     );
   }
 }
