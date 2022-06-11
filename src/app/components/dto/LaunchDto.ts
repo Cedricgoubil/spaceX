@@ -3,7 +3,7 @@ export class LaunchDto {
   flight_number?: number;
   name?: string;
   details?: string;
-  crew?: string[];
+  crew?: string[] | any;
   ships?: string[];
   capsules?: string[];
   payloads?: string[];

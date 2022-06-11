@@ -9,7 +9,7 @@
         <i class="fa-thin fa-chevron-left"></i>
       </div>
     </div>
-    <div class="col-md-7">
+    <!-- <div class="col-md-7">
       <h1 class="text-center">
         {{ launch?.name }}
       </h1>
@@ -45,7 +45,7 @@
           {{ launch?.payloads }}
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="col-md-4">
       <ng-container *ngIf="launch?.links?.flickr?.original?.length">
         <img
@@ -87,13 +87,17 @@
         </ul>
       </div>
     </div>
-    <div class="col-md-1">
+    <!-- <div class="col-md-1">
       <div style="display: flex; flex-direction: column">
         <img class="imgTest" src="../../../assets/img/yellow.jpg" />
         <img class="imgTest" src="../../../assets/img/yellow.jpg" />
         <img class="imgTest" src="../../../assets/img/yellow.jpg" />
         <img class="imgTest" src="../../../assets/img/yellow.jpg" />
       </div>
-    </div>
+    </div> -->
+
+    <ng-container *ngFor="let crewMembers of allCrewMembers">
+      <p style="color: blue">{{ crewMembers?.name | titlecase }}</p>
+    </ng-container>
   </div>
 </div>

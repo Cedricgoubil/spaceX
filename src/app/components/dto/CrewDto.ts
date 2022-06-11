@@ -1,5 +1,6 @@
 export class CrewDto {
-  name?: string;
+  id?: string | any;
+  name?: string
   agency?: string;
   image?: string;
   wikipedia?: string;
@@ -7,5 +8,5 @@ export class CrewDto {
     string
   ];
   status?: string;
-  id?: string;
+
 }
