@@ -8,7 +8,7 @@ import { CrewDto } from '../dto/CrewDto';
   styleUrls: ['./crew-list.component.css']
 })
 export class CrewListComponent implements OnInit {
-  allCrewMembers!: CrewDto[];
+  allCrewMembers!: CrewDto[] | any;
   isSucceed?: boolean | any;
   searchTerm?: string | any;
   firstPage?: number | any;

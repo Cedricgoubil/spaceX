@@ -16,7 +16,7 @@
         <button
           class="btn bg-transparent"
           (click)="clearInput()"
-          style="margin-left: -40px; z-index: 100; color: #000000"
+          style="margin-left: -40px; z-index: 100; color: #ffffff"
         >
           <i class="fa-thin fa-times"></i>
         </button>
@@ -39,7 +39,6 @@
           >
             <i class="fa-thin fa-circle-check"></i> Succeed
           </button>
-
           <button
             *ngIf="!isFailed"
             (click)="displayFailedLaunches()"
@@ -56,7 +55,6 @@
           >
             <i class="fa-thin fa-circle-xmark"></i> Failed
           </button>
-
           <button
             *ngIf="!isUpcoming"
             (click)="displayUpcomingLaunches()"
@@ -79,18 +77,12 @@
     <div class="text-white col-md-4">
       <app-upcominglaunch-list></app-upcominglaunch-list>
     </div>
-    <div class="col-12">
-      <div class="text-white text-center">
-        <h2 *ngIf="(allLaunches | searchlaunch: searchTerm)?.length == 0">
-          No Launch found!
-        </h2>
-      </div>
-      <div *ngIf="loading" class="text-center">
-        <h5>
-          <i class="fa-thin fa-circle-notch fa-spin" style="color: red"></i>
-          Loading more recipes...
-        </h5>
-      </div>
+    <div class="text-white text-center">
+      <h2 *ngIf="(allLaunches | searchlaunch: searchTerm)?.length == 0">
+        No Launch found!
+      </h2>
+    </div>
+    <div *ngIf="allLaunches?.length > 0; else listIsLoading">
       <div
         class="row row-cols-1 row-cols-md-3"
         (scrollingFinished)="onScrollingFinished()"
@@ -151,3 +143,9 @@
     </div>
   </div>
 </div>
+<ng-template #listIsLoading>
+  <div class="text-center text-white">
+    <i class="fa-solid fa-loader fa-spin fa-2x"></i>
+    <h5>Loading <span class="fa-beat-fade">...</span></h5>
+  </div>
+</ng-template>

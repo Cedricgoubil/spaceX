@@ -8,13 +8,12 @@ import { LaunchDto } from '../dto/launchdto';
   styleUrls: ['./launch-list.component.css']
 })
 export class LaunchListComponent implements OnInit {
-  allLaunches!: LaunchDto[];
+  allLaunches!: LaunchDto[] | any;
   isSucceed?: boolean | any;
   isFailed?: boolean | any;
   isUpcoming?: boolean | any;
   searchTerm?: string | any;
   firstPage?: number | any;
-
 
   numberOfCard?: number | any;
   loading?: boolean | any;

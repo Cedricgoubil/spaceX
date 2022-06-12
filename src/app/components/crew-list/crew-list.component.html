@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <div class="offset-3 input-group input-group-sm mt-4">
+      <div class="offset-3 input-group input-group-sm my-5">
         <span style="margin-right: -40px" class="input-group-text text-dark"
           ><i class="fa-thin fa-search" style="color: #fb2056"></i
         ></span>
@@ -16,40 +16,44 @@
         <button
           class="btn bg-transparent"
           (click)="clearInput()"
-          style="margin-left: -40px; z-index: 100; color: #000000"
+          style="margin-left: -40px; z-index: 100; color: #ffffff"
         >
           <i class="fa-thin fa-times"></i>
         </button>
       </div>
-      <div class="text-white text-center mt-2">
+      <div class="text-white text-center">
         <h2 *ngIf="(allCrewMembers | searchcrew: searchTerm)?.length == 0">
           No Crew found!
         </h2>
       </div>
-      <div class="row row-cols-1 row-cols-md-3">
-        <div
-          *ngFor="let crewMember of allCrewMembers | searchlaunch: searchTerm"
-        >
+      <div *ngIf="allCrewMembers?.length > 0; else listIsLoading">
+        <div class="row row-cols-1 row-cols-md-3">
           <div
-            routerLink="/crewMember-details/{{ crewMember?.id }}"
-            class="card text-white bg-transparent my-2"
+            *ngFor="let crewMember of allCrewMembers | searchlaunch: searchTerm"
           >
-            <img
-              src="{{ crewMember?.image }}"
-              class="card-img-top"
-              alt="{{ crewMember?.name }}"
-            />
-            <div class="card-body">
-              <h3 class="card-title">{{ crewMember?.name }}</h3>
-              <h5 class="text-muted">Agency {{ crewMember?.agency }}</h5>
-              <p *ngIf="crewMember?.status" style="color: #1ea97c">Active</p>
-              <p *ngIf="!crewMember?.status" style="color: #ff5757">
-                Not Active
-              </p>
-              <div style="display: flex; justify-content: flex-end">
-                <a href="{{ crewMember?.wikipedia }}" target="_blank">
-                  <button type="button" class="btn btn-dark">Wikipedia</button>
-                </a>
+            <div
+              routerLink="/crewMember-details/{{ crewMember?.id }}"
+              class="card text-white bg-transparent my-2"
+            >
+              <img
+                src="{{ crewMember?.image }}"
+                class="card-img-top"
+                alt="{{ crewMember?.name }}"
+              />
+              <div class="card-body">
+                <h3 class="card-title">{{ crewMember?.name }}</h3>
+                <h5 class="text-muted">Agency {{ crewMember?.agency }}</h5>
+                <p *ngIf="crewMember?.status" style="color: #1ea97c">Active</p>
+                <p *ngIf="!crewMember?.status" style="color: #ff5757">
+                  Not Active
+                </p>
+                <div style="display: flex; justify-content: flex-end">
+                  <a href="{{ crewMember?.wikipedia }}" target="_blank">
+                    <button type="button" class="btn btn-dark">
+                      Wikipedia
+                    </button>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -57,4 +61,10 @@
       </div>
     </div>
   </div>
+  <ng-template #listIsLoading>
+    <div class="text-center text-white">
+      <i class="fa-solid fa-loader fa-spin fa-2x"></i>
+      <h5>Loading <span class="fa-beat-fade">...</span></h5>
+    </div>
+  </ng-template>
 </div>
