@@ -12,6 +12,9 @@ import { UpcominglaunchListComponent } from './components/upcominglaunch-list/up
 import { UpcominglaunchDetailsComponent } from './components/upcominglaunch-details/upcominglaunch-details.component';
 import { CrewDetailsComponent } from './components/crew-details/crew-details.component';
 import { CrewListComponent } from './components/crew-list/crew-list.component';
+import { CompanyInfoComponent } from './components/company-info/company-info.component';
+import { DragonsListComponent } from './components/dragons-list/dragons-list.component';
+import { DragonDetailsComponent } from './components/dragon-details/dragon-details.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
@@ -23,6 +26,9 @@ const routes: Routes = [
   { path: 'upcominglaunch-details/:id', component: UpcominglaunchDetailsComponent, canActivate: [AuthGuard] },
   { path: 'crew-list', component: CrewListComponent, canActivate: [AuthGuard] },
   { path: 'crew-details/:id', component: CrewDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'company-info', component: CompanyInfoComponent, canActivate: [AuthGuard] },
+  { path: 'dragons-list', component: DragonsListComponent, canActivate: [AuthGuard] },
+  { path: 'dragon-details/:id', component: DragonDetailsComponent, canActivate: [AuthGuard] },
   { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'resetpassword', component: ResetpasswordComponent },
 ];

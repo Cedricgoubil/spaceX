@@ -7,11 +7,17 @@
   padding: 15px;
 }
 
-.crew-members-picture img {
+.crew-members-picture  {
   width: 70px;
   height: 70px;
   margin-top: 10px;
   border: 1px solid #ffffff;
   object-fit: cover;
   border-radius: 50%;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+  .crew-members-picture {
+    float: left;
+  }
 }

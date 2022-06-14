@@ -91,10 +91,12 @@
     </div>
     <div *ngIf="launch?.crew.length > 0" class="col-md-2">
       <ng-container *ngFor="let onBoard of crewMembersOnBoard">
-        <div class="crew-members-picture">
-          <img src="{{ onBoard?.image }}" title="{{ onBoard?.name }}" />
-        </div>
-        <div>
+        <div class="crew-members-container">
+          <img
+            class="crew-members-picture"
+            src="{{ onBoard?.image }}"
+            title="{{ onBoard?.name }}"
+          />
           <p>{{ onBoard?.name }}</p>
         </div>
       </ng-container>

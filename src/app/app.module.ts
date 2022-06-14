@@ -27,6 +27,9 @@ import { UpcominglaunchListComponent } from './components/upcominglaunch-list/up
 import { UpcominglaunchDetailsComponent } from './components/upcominglaunch-details/upcominglaunch-details.component';
 import { CrewListComponent } from './components/crew-list/crew-list.component';
 import { CrewDetailsComponent } from './components/crew-details/crew-details.component';
+import { CompanyInfoComponent } from './components/company-info/company-info.component';
+import { DragonsListComponent } from './components/dragons-list/dragons-list.component';
+import { DragonDetailsComponent } from './components/dragon-details/dragon-details.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
 
@@ -53,6 +56,9 @@ import { ScrollTrackerDirective } from './directives/scroll-tracker.directive';
     UpcominglaunchDetailsComponent,
     CrewListComponent,
     CrewDetailsComponent,
+    CompanyInfoComponent,
+    DragonsListComponent,
+    DragonDetailsComponent,
     FooterComponent,
     ResetpasswordComponent,
     SucceedLaunchFilterPipe,
@@ -60,8 +66,7 @@ import { ScrollTrackerDirective } from './directives/scroll-tracker.directive';
     UpcomingLaunchFilterPipe,
     SearchLaunchFilterPipe,
     SearchCrewFilterPipe,
-    ScrollTrackerDirective
-
+    ScrollTrackerDirective,
   ],
   imports: [
     BrowserModule,
