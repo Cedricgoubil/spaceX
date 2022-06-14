@@ -13,9 +13,11 @@ import { CrewDto } from '../dto/CrewDto';
 })
 export class LaunchDetailsComponent implements OnInit {
   id!: string;
-  launch?: LaunchDto;
-  allCrewMembers!: CrewDto[] | any
-  getCrewForLaunch: LaunchDto[] = []
+  launch?: LaunchDto | any;
+  launchForCrew?: LaunchDto | any;
+
+  allCrewMembers?: CrewDto[] | any;
+  crewMembersOnBoard?: CrewDto[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -27,15 +29,14 @@ export class LaunchDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.getLaunch();
-    this.getCrew()
+    this.getCrew();
+    this.getFlyingCrewForLaunch();
   }
 
   getLaunch() {
     this.launchService.getLaunch(this.id).then((resultData) => {
       this.launch = resultData
-      console.log('Crew', this.launch.crew[0]);
     })
-
   }
 
   getCrew() {
@@ -44,42 +45,14 @@ export class LaunchDetailsComponent implements OnInit {
     })
   }
 
-  // getFlyingCrewForLaunch(crewId: string) {
-
-  //     var contains = false;
-  //     var result;
-
-  //     this.getCrewForLaunch.forEach(crewMemberForLaunch => {
-  //       crewMemberForLaunch.crew.forEach(function(innerData){
-  //         if (innerData.term_id === id) {
-  //           contains = true;
-  //         }
-  //       })
-  //       if (contains) {
-  //         result = obj.ticker.name;
-  //         contains = false;
-  //       }
-  //     });
-
-  //     return result;
-  //   }
-
-  getFlyingCrewForLaunch(crewId: CrewDto): boolean {
-
-    if (this.getCrewForLaunch?.length === 0) {
-      return false;
-    }
-
-    let returnValue = true;
-    console.log('getFlyingCrewForLaunch', crewId);
-    this.getCrewForLaunch?.forEach(crewMemberForLaunch => {
-      if (crewMemberForLaunch?.crew?.findIndex((item: string) => item === crewId.id) < 0) {
-        returnValue = false;
-      }
+  getFlyingCrewForLaunch() {
+    this.launchService.getLaunch(this.id).then((resultData) => {
+      this.launchForCrew = resultData?.crew.forEach((item: any) => {
+        let crewMember = this.allCrewMembers?.filter((itemLaunch: CrewDto) => itemLaunch.id === item)
+        this.crewMembersOnBoard?.push(crewMember[0])
+      })
     })
-    return returnValue;
   }
-
 
   navigateBack(): void {
     this.location.back();

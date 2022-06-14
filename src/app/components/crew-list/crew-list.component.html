@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <div class="offset-3 input-group input-group-sm my-5">
+      <div class="input-group input-group-sm my-5">
         <span style="margin-right: -40px" class="input-group-text text-dark"
           ><i class="fa-thin fa-search" style="color: #fb2056"></i
         ></span>
@@ -9,7 +9,7 @@
           style="padding-left: 40px"
           class="form-control"
           type="text"
-          placeholder="Search for launch"
+          placeholder="Search for crew member (ex: Thomas Pesquet)"
           [(ngModel)]="searchTerm"
           (keyup)="resetListToFirstPage()"
         />
@@ -62,7 +62,7 @@
     </div>
   </div>
   <ng-template #listIsLoading>
-    <div class="text-center text-white">
+    <div class="text-center text-white mt-5">
       <i class="fa-solid fa-loader fa-spin fa-2x"></i>
       <h5>Loading <span class="fa-beat-fade">...</span></h5>
     </div>

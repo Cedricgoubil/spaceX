@@ -9,7 +9,7 @@
           style="padding-left: 40px"
           class="form-control"
           type="text"
-          placeholder="Search for launch"
+          placeholder="Search for launch (ex: Inspiration)"
           [(ngModel)]="searchTerm"
           (keyup)="resetListToFirstPage()"
         />
@@ -144,7 +144,7 @@
   </div>
 </div>
 <ng-template #listIsLoading>
-  <div class="text-center text-white">
+  <div class="text-center text-white mt-5">
     <i class="fa-solid fa-loader fa-spin fa-2x"></i>
     <h5>Loading <span class="fa-beat-fade">...</span></h5>
   </div>
