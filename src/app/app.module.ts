@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NgxSimpleCountdownModule } from 'ngx-simple-countdown';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -78,7 +79,8 @@ import { ScrollTrackerDirective } from './directives/scroll-tracker.directive';
     AngularFireModule.initializeApp(environment.firebase, 'spaceX'),
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),
-    provideStorage(() => getStorage())
+    provideStorage(() => getStorage()),
+    NgxSimpleCountdownModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

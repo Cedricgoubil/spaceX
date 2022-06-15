@@ -23,10 +23,13 @@ export class LaunchListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.initAmountOfCards(this.numberOfCard);
-    // this.launchService.getAllLaunch().then((resultData) => {
-    //   this.allLaunches = resultData
-    // })
+    this.getLaunches()
+  }
+
+  getLaunches() {
+    this.launchService.getAllLaunch().then((resultData) => {
+      this.allLaunches = resultData
+    })
   }
 
   displaySucceededLaunches() {

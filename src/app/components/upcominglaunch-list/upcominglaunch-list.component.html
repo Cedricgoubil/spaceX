@@ -1,23 +1,28 @@
 <div class="card bg-transparent border-info my-3">
   <div class="card-content">
     <div class="card-body">
-      <div class="text-end">
+      <div class="text-start">
         <i class="fa-thin fa-rocket-launch"></i> Upcoming Launch
       </div>
-      <div *ngFor="let upcomingLaunch of allUpcomingLaunch?.slice(0, 1)">
-        <div class="text-start">
-          <h4 class="text-warning">{{ upcomingLaunch?.name }}</h4>
+      <div *ngFor="let upcomingLaunch of allUpcomingLaunch">
+        <div class="text-end">
+          <h5 class="text-warning">{{ upcomingLaunch?.name }}</h5>
         </div>
         <div class="text-start">
           <span> {{ upcomingLaunch?.date_utc | date: "long" }}</span>
         </div>
-        <div class="text-center text-danger">
-          <h2>{{ countDownToNextLaunch() }}</h2>
-          {{ stringifiedDate }}
-
-          <!-- {{ hours | date: "hh" }} : {{ minutes | date: "mm" }} :
-          {{ seconds | date: "ss" }} -->
-        </div>
+        <div
+          simpleCountdown
+          [dateTo]="upcomingLaunch?.date_unix"
+          [endMessage]="'Launching'"
+          styles="'
+              font-size: 20px;
+              font-weight: 200;
+              color: #ff5757;
+              padding: 10px 4px;
+          "
+        ></div>
+        <!-- (finish)="onfinish()" -->
       </div>
     </div>
   </div>
