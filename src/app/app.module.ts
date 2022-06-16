@@ -31,6 +31,7 @@ import { CrewDetailsComponent } from './components/crew-details/crew-details.com
 import { CompanyInfoComponent } from './components/company-info/company-info.component';
 import { DragonsListComponent } from './components/dragons-list/dragons-list.component';
 import { DragonDetailsComponent } from './components/dragon-details/dragon-details.component';
+import { SpaceXLivePipe } from './pipes/spacexlive-filter.pipe';
 import { FooterComponent } from './components/footer/footer.component';
 import { ResetpasswordComponent } from './components/resetpassword/resetpassword.component';
 
@@ -41,8 +42,11 @@ import { UpcomingLaunchFilterPipe } from './pipes/upcoming-launch.pipe';
 import { SearchLaunchFilterPipe } from './pipes/search-launch.pipe';
 import { SearchCrewFilterPipe } from './pipes/search-crew.pipe';
 
+
 // Directives
 import { ScrollTrackerDirective } from './directives/scroll-tracker.directive';
+import { SpacexLiveComponent } from './components/spacex-live/spacex-live.component';
+
 
 @NgModule({
   declarations: [
@@ -60,6 +64,7 @@ import { ScrollTrackerDirective } from './directives/scroll-tracker.directive';
     CompanyInfoComponent,
     DragonsListComponent,
     DragonDetailsComponent,
+    SpacexLiveComponent,
     FooterComponent,
     ResetpasswordComponent,
     SucceedLaunchFilterPipe,
@@ -67,6 +72,7 @@ import { ScrollTrackerDirective } from './directives/scroll-tracker.directive';
     UpcomingLaunchFilterPipe,
     SearchLaunchFilterPipe,
     SearchCrewFilterPipe,
+    SpaceXLivePipe,
     ScrollTrackerDirective,
   ],
   imports: [

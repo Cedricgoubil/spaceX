@@ -23,7 +23,6 @@ export class UpcominglaunchListComponent implements OnInit {
 
   getUpcomingLaunch() {
     let now = Date.now()
-    console.log(now)
     this.upcomingLauchService.getAllUpcomingLaunch().then((resultData) => {
       resultData.forEach(upcoming => {
         if (upcoming?.date_unix > now) {
@@ -34,6 +33,21 @@ export class UpcominglaunchListComponent implements OnInit {
       })
     })
   }
+
+  // launchingTime(): boolean {
+  //   let now = Date.now()
+  //   console.log(now)
+  //   this.upcomingLauchService.getAllUpcomingLaunch().then((resultData) => {
+  //     resultData.forEach(upcoming => {
+  //       if (upcoming?.date_unix > now) {
+  //         return false
+  //       }
+  //       return true
+  //     })
+  //   })
+  //   return false
+  // }
+
 }
 
 // countDownToNextLaunch() {

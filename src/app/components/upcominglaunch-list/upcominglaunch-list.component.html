@@ -21,8 +21,22 @@
               color: #ff5757;
               padding: 10px 4px;
           "
-        ></div>
-        <!-- (finish)="onfinish()" -->
+        >
+          <!-- Can use this if want to make an Launching function (finish)="onfinish()" -->
+        </div>
+        <!-- <ng-container>
+          <div class="text-end">
+            <div>
+              Watch it Live
+              <a routerLink="/spacex-live" type="button">
+                !-- <app-spacex-live
+                  [spaceXLaunchLiveYouTube]="upcomingLaunch?.links?.webcast"
+                ></app-spacex-live> --
+                <i class="fab fa-youtube fa-2x" style="color: #fe0101"></i>
+              </a>
+            </div>
+          </div>
+        </ng-container> -->
       </div>
     </div>
   </div>

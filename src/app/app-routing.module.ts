@@ -15,6 +15,7 @@ import { CrewListComponent } from './components/crew-list/crew-list.component';
 import { CompanyInfoComponent } from './components/company-info/company-info.component';
 import { DragonsListComponent } from './components/dragons-list/dragons-list.component';
 import { DragonDetailsComponent } from './components/dragon-details/dragon-details.component';
+import { SpacexLiveComponent } from './components/spacex-live/spacex-live.component';
 
 const routes: Routes = [
   { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
@@ -29,6 +30,7 @@ const routes: Routes = [
   { path: 'company-info', component: CompanyInfoComponent, canActivate: [AuthGuard] },
   { path: 'dragons-list', component: DragonsListComponent, canActivate: [AuthGuard] },
   { path: 'dragon-details/:id', component: DragonDetailsComponent, canActivate: [AuthGuard] },
+  { path: 'spacex-live', component: SpacexLiveComponent, canActivate: [AuthGuard] },
   { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'resetpassword', component: ResetpasswordComponent },
 ];
