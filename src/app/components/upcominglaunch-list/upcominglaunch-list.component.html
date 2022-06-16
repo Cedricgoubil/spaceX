@@ -11,18 +11,24 @@
         <div class="text-start">
           <span> {{ upcomingLaunch?.date_utc | date: "long" }}</span>
         </div>
-        <div
-          simpleCountdown
-          [dateTo]="upcomingLaunch?.date_unix"
-          [endMessage]="'Launching'"
-          styles="'
-              font-size: 20px;
-              font-weight: 200;
-              color: #ff5757;
-              padding: 10px 4px;
-          "
-        >
-          <!-- Can use this if want to make an Launching function (finish)="onfinish()" -->
+        <div class="col-12">
+          <div class="row">
+            <div class="offset-3 col-8">
+              <div
+                simpleCountdown
+                [dateTo]="upcomingLaunch?.date_unix"
+                [endMessage]="'Launching'"
+                styles="
+                  font-size: 20px;
+                  font-weight: 200;
+                  color: #dc3545;
+                  padding: 10px 4px;
+                  "
+              >
+                <!-- Can use this if want to make an Launching function (finish)="onfinish()" -->
+              </div>
+            </div>
+          </div>
         </div>
         <!-- <ng-container>
           <div class="text-end">

@@ -23,14 +23,14 @@
     >
       <ul *ngIf="isLoggedIn" class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/launch-list">
-            Launches <i class="fa-thin fa-rocket-launch"></i
-          ></a>
+          <a class="nav-link" routerLink="/launch-list" title="Launches">
+            <i class="fa-thin fa-rocket-launch"></i><small> Launches</small></a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/crew-list">
-            Crew <i class="fa-thin fa-user-astronaut"></i
-          ></a>
+          <a class="nav-link" routerLink="/crew-list" title="Crew">
+            <i class="fa-thin fa-user-astronaut"></i><small> Crew</small></a
+          >
         </li>
       </ul>
       <ul *ngIf="isLoggedIn" class="navbar-nav mx-5">

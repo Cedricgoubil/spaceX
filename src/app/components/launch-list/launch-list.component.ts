@@ -78,7 +78,7 @@ export class LaunchListComponent implements OnInit {
       case true:
         return '#1ea97c';
       case false:
-        return '#ff5757';
+        return '#dc3545';
       case null:
         return '#696cff'
     }

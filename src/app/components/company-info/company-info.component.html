@@ -43,32 +43,40 @@
       <hr />
 
       <h6>
-        Employees<small class="text-muted"> {{ companyInfo?.employees }}</small>
+        <i class="fa-duotone fa-users"></i> Employees<small class="text-muted">
+          {{ companyInfo?.employees }}</small
+        >
       </h6>
       <h6>
-        Vehicules<small class="text-muted"> {{ companyInfo?.vehicles }}</small>
+        <i class="fa-duotone fa-rocket"></i> Vehicules<small class="text-muted">
+          {{ companyInfo?.vehicles }}</small
+        >
       </h6>
       <h6>
-        Launch Sites<small class="text-muted">
+        <i class="fa-duotone fa-location-dot"></i> Launch Sites<small
+          class="text-muted"
+        >
           {{ companyInfo?.launch_sites }}</small
         >
       </h6>
       <h6>
-        Test Sites<small class="text-muted">
+        <i class="fa-duotone fa-location-dot"></i> Test Sites<small
+          class="text-muted"
+        >
           {{ companyInfo?.test_sites }}</small
         >
       </h6>
 
       <hr />
       <p class="text-center">
-        Headquarters<br /><small>
-          {{ companyInfo?.headquarters?.address }} |
-          {{ companyInfo?.headquarters?.city }} |
+        <i class="fa-duotone fa-map-pin"></i> Headquarters<br /><small>
+          {{ companyInfo?.headquarters?.address }},
+          {{ companyInfo?.headquarters?.city }},
           {{ companyInfo?.headquarters?.state }}</small
         >
       </p>
     </div>
-    <div class="modal-footer" style="background-color: #000000; color: #ffffff">
+    <div class="modal-footer" style="background-color: #000000; color: #dc3545">
       <i
         class="fa-thin fa-xmark fa-2x"
         type="button"

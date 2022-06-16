@@ -107,19 +107,19 @@
             <div class="card-img-overlay">
               <div style="display: flex; justify-content: flex-end">
                 <ng-container *ngIf="launch?.success">
-                  <i class="fa-thin fa-circle-check" style="color: #1ea97c"></i>
+                  <p style="color: #1ea97c">Success</p>
                 </ng-container>
                 <ng-container
                   *ngIf="!launch?.success && launch?.success != null"
                 >
-                  <i class="fa-thin fa-circle-xmark" style="color: #ff5757"></i>
+                  <p style="color: #dc3545">Failed</p>
                 </ng-container>
                 <ng-container *ngIf="launch?.upcoming">
-                  <i class="fa-thin fa-hourglass" style="color: #696cff"></i>
+                  <p style="color: #696cff">Upcoming</p>
                 </ng-container>
               </div>
             </div>
-
+            <br />
             <img
               class="card-img-top"
               src="{{ launch?.links?.patch?.large }}"
@@ -127,15 +127,21 @@
               onError="this.src='/assets/img/spacex-noimage.jpg';"
             />
             <div class="card-body">
-              <h5 class="card-title">{{ launch?.name }}</h5>
+              <h5 class="card-title text-end">{{ launch?.name }}</h5>
               <h6 class="card-text">
-                Rocket <small class="text-muted">{{ launch?.rocket }}</small>
+                <i class="fa-duotone fa-shuttle-space fa-rotate-270"></i>
+                Flight # {{ launch?.flight_number }}
               </h6>
+              <!-- ! Loop through rockets and get name -->
+              <!-- <h6 class="card-text">
+                Rocket <small class="text-muted">{{ launch?.rocket }}</small>
+              </h6> -->
             </div>
             <div class="card-footer">
-              <small class="text-muted">{{
-                launch?.date_utc | date: "mediumDate"
-              }}</small>
+              <div class="text-muted">
+                <i class="fa-duotone fa-calendar-days"></i>
+                {{ launch?.date_utc | date: "mediumDate" }}
+              </div>
             </div>
           </div>
         </div>
