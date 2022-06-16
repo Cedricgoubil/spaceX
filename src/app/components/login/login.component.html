@@ -1,83 +1,139 @@
 <body>
-  <main class="form-signin">
-    <div class="text-center text-muted">
-      <h1 class="mt-5">Sign in</h1>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="text-white text-center signin-title">
+          <img
+            class="my-5"
+            src="/assets/img/spacex-logo.png"
+            alt="mydeliciouslygreen"
+            width="400"
+          />
+          <h3 class="text-muted mb-5">
+            SpaceX designs, manufactures and launches advanced rockets and
+            spacecraft. The company was founded in 2002 to revolutionize space
+            technology, with the ultimate goal of enabling people to live on
+            other planets.
+          </h3>
+        </div>
+      </div>
+      <div class="text-center">
+        <button
+          type="button"
+          class="btn"
+          style="
+            background-color: #000000;
+            color: #ffffff;
+            padding-left: 50px;
+            padding-right: 50px;
+          "
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
+        >
+          Sign In
+        </button>
+      </div>
+      <div class="text-center text-white mt-5">
+        <label>Don't have an account yet? </label>
+        <div class="text-center mt-2">
+          <a routerLink="/register" type="button" class="btn btn-outline-light">
+            Register instead
+          </a>
+        </div>
+      </div>
     </div>
-    <form (submit)="onSubmit()">
-      <div class="form-group mb-4 text-muted">
-        <i class="fa-thin fa-at me-2"></i>
-        <label for="email">Email</label>
-        <input
-          type="email"
-          class="form-control"
-          name="email"
-          placeholder="name@example.com"
-          #userEmail="ngModel"
-          [(ngModel)]="email"
-          [ngClass]="{
-            'is-invalid': userEmail.errors && userEmail.touched
-          }"
-          onkeyup="this.value = this.value.toLowerCase();"
-          pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
-          required
-        />
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
         <div
-          class="invalid-feedback"
-          [hidden]="!userEmail.errors?.['required']"
+          class="modal-content"
+          style="background-color: #000000; color: #ffffff"
         >
-          E-mail required
-        </div>
-        <div class="invalid-feedback" [hidden]="!userEmail.errors?.['pattern']">
-          E-mail invalid
+          <main class="form-signin">
+            <div class="text-center">
+              <h1>Sign in</h1>
+            </div>
+            <form (submit)="onSubmit()">
+              <div class="form-group mb-4 text-muted">
+                <i class="fa-thin fa-at me-2"></i>
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  placeholder="name@example.com"
+                  #userEmail="ngModel"
+                  [(ngModel)]="email"
+                  [ngClass]="{
+                    'is-invalid': userEmail.errors && userEmail.touched
+                  }"
+                  onkeyup="this.value = this.value.toLowerCase();"
+                  pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                  required
+                />
+                <div
+                  class="invalid-feedback"
+                  [hidden]="!userEmail.errors?.['required']"
+                >
+                  E-mail required
+                </div>
+                <div
+                  class="invalid-feedback"
+                  [hidden]="!userEmail.errors?.['pattern']"
+                >
+                  E-mail invalid
+                </div>
+              </div>
+              <div class="form-group mb-4 text-muted">
+                <i class="fa-thin fa-fingerprint me-2"></i>
+                <label for="password">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  placeholder="Password"
+                  #userPassword="ngModel"
+                  [(ngModel)]="password"
+                  [ngClass]="{
+                    'is-invalid': userPassword.errors && userPassword.touched
+                  }"
+                  minlength="5"
+                  autocomplete="on"
+                  required
+                />
+                <div
+                  class="invalid-feedback"
+                  [hidden]="!userPassword.errors?.['required']"
+                >
+                  Password required
+                </div>
+                <div
+                  class="invalid-feedback"
+                  [hidden]="!userPassword.errors?.['minlength']"
+                >
+                  Password invalid
+                </div>
+              </div>
+              <div class="d-grid gap-2 mb-4">
+                <input
+                  type="submit"
+                  value="Ready for Take Off"
+                  class="btn btn-sm btn-light"
+                  data-bs-dismiss="modal"
+                />
+                <a routerLink="/resetpassword" class="text-end text-muted"
+                  ><small>Forgot your password? </small></a
+                >
+              </div>
+            </form>
+          </main>
         </div>
       </div>
-      <div class="form-group mb-4 text-muted">
-        <i class="fa-thin fa-fingerprint me-2"></i>
-        <label for="password">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          name="password"
-          placeholder="Password"
-          #userPassword="ngModel"
-          [(ngModel)]="password"
-          [ngClass]="{
-            'is-invalid': userPassword.errors && userPassword.touched
-          }"
-          minlength="5"
-          autocomplete="on"
-          required
-        />
-        <div
-          class="invalid-feedback"
-          [hidden]="!userPassword.errors?.['required']"
-        >
-          Password required
-        </div>
-        <div
-          class="invalid-feedback"
-          [hidden]="!userPassword.errors?.['minlength']"
-        >
-          Password invalid
-        </div>
-      </div>
-      <div class="d-grid gap-2 mb-4">
-        <input type="submit" value="Ready for Take Off" class="btn btn-sm" />
-        <a routerLink="/resetpassword" class="text-end text-muted"
-          ><small>Forgot your password? </small></a
-        >
-      </div>
-    </form>
-
-    <div class="d-grid gap-2">
-      <label class="text-center text-muted">Don't have an account yet? </label>
-      <a
-        routerLink="/register"
-        class="btn btn-sm"
-        style="background-color: #000000; color: #e6e6e6"
-      >
-        Go To Register
-      </a>
     </div>
-  </main>
+  </div>
 </body>

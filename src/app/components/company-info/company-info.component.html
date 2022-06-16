@@ -1,1 +1,79 @@
-{{ companyInfo | json }}
+<div class="modal-dialog modal-dialog-scrollable modal-sm">
+  <div class="modal-content">
+    <div
+      class="modal-header text-center"
+      style="background-color: #000000; color: #ffffff"
+    >
+      <div class="modal-title w-100" id="exampleModalLabel">
+        <img
+          class="mb-4"
+          src="/assets/img/spacex-logo.png"
+          alt="mydeliciouslygreen"
+          width="200"
+        />
+      </div>
+    </div>
+    <div class="modal-body" style="background-color: #000000; color: #ffffff">
+      <h5>
+        Founder<small class="text-muted"> {{ companyInfo?.founder }}</small>
+      </h5>
+      <h5>
+        Founded<small class="text-muted"> {{ companyInfo?.founded }}</small>
+      </h5>
+      <h5>
+        CEO<small class="text-muted"> {{ companyInfo?.ceo }}</small>
+      </h5>
+      <h5>
+        CTO<small class="text-muted"> {{ companyInfo?.cto }}</small>
+      </h5>
+      <h5>
+        COO<small class="text-muted"> {{ companyInfo?.coo }}</small>
+      </h5>
+      <h5>
+        CTO (Propulsion)<small class="text-muted">
+          {{ companyInfo?.cto_propulsion }}</small
+        >
+      </h5>
+      <h5>
+        Valuation<small class="text-muted">
+          {{ companyInfo?.valuation | currency }}</small
+        >
+      </h5>
+
+      <hr />
+
+      <h6>
+        Employees<small class="text-muted"> {{ companyInfo?.employees }}</small>
+      </h6>
+      <h6>
+        Vehicules<small class="text-muted"> {{ companyInfo?.vehicles }}</small>
+      </h6>
+      <h6>
+        Launch Sites<small class="text-muted">
+          {{ companyInfo?.launch_sites }}</small
+        >
+      </h6>
+      <h6>
+        Test Sites<small class="text-muted">
+          {{ companyInfo?.test_sites }}</small
+        >
+      </h6>
+
+      <hr />
+      <p class="text-center">
+        Headquarters<br /><small>
+          {{ companyInfo?.headquarters?.address }} |
+          {{ companyInfo?.headquarters?.city }} |
+          {{ companyInfo?.headquarters?.state }}</small
+        >
+      </p>
+    </div>
+    <div class="modal-footer" style="background-color: #000000; color: #ffffff">
+      <i
+        class="fa-thin fa-xmark fa-2x"
+        type="button"
+        data-bs-dismiss="modal"
+      ></i>
+    </div>
+  </div>
+</div>

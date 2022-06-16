@@ -3,7 +3,11 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  min-height: 100vh;
+  min-height: 90vh;
+}
+
+.modal.fade {
+  margin-top: 12%;
 }
 
 .card {
@@ -36,11 +40,10 @@ body {
   color: #ffffff;
 }
 
-.btn-sm {
-  background-color: #000000; 
-  color: #ffffff;
+@media only screen and (max-width: 768px) {
+  .modal.fade {
+    margin-top: 35%;
+  }
 }
-
-
 
 

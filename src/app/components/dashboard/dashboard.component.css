@@ -1,10 +1,23 @@
 video {
   object-fit: cover;
   width: 100vw;
-  height: 80vh;
+  height: 90vh;
   position: fixed;
   left: 0;
 }
+
+.modal-company-info {
+  color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: all 0.5s ease-in-out;
+  -webkit-tap-highlight-color: none;
+  -webkit-appearance: none;
+}
+
+/* .modal-company-info:hover {
+  transform: scale(1.25);
+} */
 
 .launch {
   position: absolute;
@@ -189,8 +202,6 @@ video {
 }
 
 @media (max-width: 767px) {
-
-
   .launch {
     top: 35%;
     left: 50%;
