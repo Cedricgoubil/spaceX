@@ -5,6 +5,8 @@ import { LaunchDto } from '../dto/launchdto';
 import { LaunchService } from 'src/app/services/launch.service';
 import { CrewService } from 'src/app/services/crew.service';
 import { CrewDto } from '../dto/CrewDto';
+import { RocketService } from 'src/app/services/rocket.service';
+import { RocketDto } from '../dto/RocketDto';
 
 @Component({
   selector: 'app-launch-details',
@@ -19,11 +21,14 @@ export class LaunchDetailsComponent implements OnInit {
   allCrewMembers?: CrewDto[] | any;
   crewMembersOnBoard?: CrewDto[] = [];
 
+  rocket?: RocketDto[] | any;
+
   constructor(
     private route: ActivatedRoute,
     private location: Location,
     private launchService: LaunchService,
-    private crewService: CrewService
+    private crewService: CrewService,
+    private rocketService: RocketService
   ) { }
 
   ngOnInit(): void {
@@ -31,6 +36,8 @@ export class LaunchDetailsComponent implements OnInit {
     this.getLaunch();
     this.getCrew();
     this.getFlyingCrewForLaunch();
+    this.getRockets();
+    this.getRocketForLaunch();
   }
 
   getLaunch() {
@@ -51,6 +58,20 @@ export class LaunchDetailsComponent implements OnInit {
         let crewMember = this.allCrewMembers?.filter((itemLaunch: CrewDto) => itemLaunch.id === item)
         this.crewMembersOnBoard?.push(crewMember[0])
       })
+    })
+  }
+
+  getRockets() {
+    this.rocketService.getAllRockets().then((resultData) => {
+      this.rocket = resultData;
+      console.log('rocketService', this.rocket)
+    })
+  }
+
+  getRocketForLaunch() {
+    this.launchService.getLaunch(this.id).then((resultData) => {
+      this.rocket = resultData;
+      console.log('launchService', this.rocket.rocket)
     })
   }
 

@@ -38,7 +38,7 @@
         <p>Cause of failures:</p>
         <ul>
           <li *ngIf="launch?.failures?.[0]?.time ">
-            Time after launch {{ launch?.failures?.[0]?.time }}
+            Time after launch {{ launch?.failures?.[0]?.time }} seconds
           </li>
           <li *ngIf="launch?.failures?.[0]?.altitude ">
             Altitude {{ launch?.failures?.[0]?.altitude }}
@@ -62,16 +62,22 @@
           <p>{{ launch?.details }}</p>
         </div>
       </div>
-      <div *ngIf="launch?.ships.length > 0" class="card bg-transparent">
-        <div class="card-header">
-          <h5>
-            <i class="fa-duotone fa-shuttle-space fa-rotate-270"></i> Ships
-          </h5>
+
+      <!-- rocket {{ rocket?.id }} launch {{ launch?.rocket }} -->
+      <!-- <ng-container *ngIf="rocket?.id === launch?.rocket">
+        <div *ngIf="launch?.rocket?.length > 0" class="card bg-transparent">
+          <ng-container *ngFor="let roc of rocket">
+            <div class="card-header">
+              <h5>
+                <i class="fa-duotone fa-shuttle-space fa-rotate-270"></i> Rocket
+              </h5>
+            </div>
+            <div class="card-body">
+              <p style="color: red">{{ roc?.name }}</p>
+            </div>
+          </ng-container>
         </div>
-        <div class="card-body">
-          <p>{{ launch?.ships }}</p>
-        </div>
-      </div>
+      </ng-container> -->
       <div *ngIf="launch?.capsules.length > 0" class="card bg-transparent">
         <div class="card-header">
           <h5><i class="fa-duotone fa-ufo"></i> Capsules</h5>

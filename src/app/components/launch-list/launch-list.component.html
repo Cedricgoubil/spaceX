@@ -99,6 +99,7 @@
         >
           <div
             routerLink="/launch-details/{{ launch?.id }}"
+            [style.pointer-events]="!launch?.upcoming ? 'auto' : 'none'"
             class="card text-white bg-transparent my-2"
             [ngStyle]="{
               'border-color': getMissionStatus(launch?.success)
