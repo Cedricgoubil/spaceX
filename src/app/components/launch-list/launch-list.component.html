@@ -156,3 +156,45 @@
     <h5>Loading <span class="fa-beat-fade">...</span></h5>
   </div>
 </ng-template>
+
+<!-- <div
+        *ngFor="
+          let launch of allLaunches
+            | searchlaunch: searchTerm
+            | succeedlaunch: isSucceed
+            | failedlaunch: isFailed
+            | upcominglaunch: isUpcoming
+        "
+      >
+        <div class="launches-list-table">
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            "
+          >
+            <img
+              class="list-table-image"
+              src="{{ launch?.links?.patch?.large }}"
+              alt="{{ launch?.name }}"
+              onError="this.src='/assets/img/spacex-noimage.jpg';"
+            />
+            <div>{{ launch?.name }}</div>
+            <div>{{ launch?.flight_number }}</div>
+            <div>{{ launch?.date_utc | date: "mediumDate" }}</div>
+            <div class="mt-1" *ngIf="launch?.success">
+              <p style="color: #1ea97c">Success</p>
+            </div>
+            <div
+              class="mt-1"
+              *ngIf="!launch?.success && launch?.success != null"
+            >
+              <p style="color: #dc3545">Failed</p>
+            </div>
+            <div class="mt-1" *ngIf="launch?.upcoming">
+              <p style="color: #696cff">Upcoming</p>
+            </div>
+          </div>
+        </div>
+      </div> -->

@@ -22,17 +22,21 @@ export class UpcominglaunchListComponent implements OnInit {
   }
 
   getUpcomingLaunch() {
-    let now = Date.now()
     this.upcomingLauchService.getAllUpcomingLaunch().then((resultData) => {
-      resultData.forEach(upcoming => {
-        if (upcoming?.date_unix > now) {
-          this.allUpcomingLaunch = resultData.slice(0, 1)
-        } else {
-          this.allUpcomingLaunch = resultData.slice(1, 2)
-        }
-      })
+      this.allUpcomingLaunch = resultData.slice(0, 1)
     })
   }
+  //   let now = Date.now()
+  //   this.upcomingLauchService.getAllUpcomingLaunch().then((resultData) => {
+  //     resultData.forEach(upcoming => {
+  //       if (upcoming?.date_unix > now) {
+  //         this.allUpcomingLaunch = resultData.slice(0, 1)
+  //       } else {
+  //         this.allUpcomingLaunch = resultData.slice(1, 2)
+  //       }
+  //     })
+  //   })
+  // }
 
   // launchingTime(): boolean {
   //   let now = Date.now()

@@ -14,14 +14,18 @@ import { RocketDto } from '../dto/RocketDto';
   styleUrls: ['./launch-details.component.css']
 })
 export class LaunchDetailsComponent implements OnInit {
-  id!: string;
+  id?: string | any;
   launch?: LaunchDto | any;
-  launchForCrew?: LaunchDto | any;
 
-  allCrewMembers?: CrewDto[] | any;
-  crewMembersOnBoard?: CrewDto[] = [];
+  // To get crew
+  crewMembersOnLaunch?: LaunchDto | any;
+  allSpaceXCrewMembers?: CrewDto[] | any;
+  crewOnBoardForLaunch?: CrewDto[] = [];
 
-  rocket?: RocketDto[] | any;
+  // To get rockets
+  rockets?: RocketDto | any;
+  rocketForLaunch?: RocketDto | any;
+  // rocketId?: string | any;
 
   constructor(
     private route: ActivatedRoute,
@@ -48,31 +52,29 @@ export class LaunchDetailsComponent implements OnInit {
 
   getCrew() {
     this.crewService.getAllCrewMembers().then((resultData) => {
-      this.allCrewMembers = resultData
+      this.allSpaceXCrewMembers = resultData
     })
   }
 
   getFlyingCrewForLaunch() {
     this.launchService.getLaunch(this.id).then((resultData) => {
-      this.launchForCrew = resultData?.crew.forEach((item: any) => {
-        let crewMember = this.allCrewMembers?.filter((itemLaunch: CrewDto) => itemLaunch.id === item)
-        this.crewMembersOnBoard?.push(crewMember[0])
+      this.crewMembersOnLaunch = resultData?.crew.forEach((item: any) => {
+        let crewMember = this.allSpaceXCrewMembers?.filter((itemLaunch: CrewDto) => itemLaunch.id === item)
+        this.crewOnBoardForLaunch?.push(crewMember[0])
       })
     })
   }
 
   getRockets() {
     this.rocketService.getAllRockets().then((resultData) => {
-      this.rocket = resultData;
-      console.log('rocketService', this.rocket)
-    })
+      this.rockets = resultData
+    });
   }
 
   getRocketForLaunch() {
     this.launchService.getLaunch(this.id).then((resultData) => {
-      this.rocket = resultData;
-      console.log('launchService', this.rocket.rocket)
-    })
+      this.rocketForLaunch = this.rockets?.find((item: RocketDto) => item.id === resultData?.rocket)
+    });
   }
 
   navigateBack(): void {

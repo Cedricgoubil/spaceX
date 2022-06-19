@@ -9,6 +9,66 @@
         <i class="fa-thin fa-chevron-left"></i>
       </div>
     </div>
+    <div class="col-md-6">
+      <h1 class="text-center text-info">
+        {{ launch?.name }}
+      </h1>
+      <h6 class="text-center">Flight #{{ launch?.flight_number }}</h6>
+      <div *ngIf="launch?.details" class="card bg-transparent">
+        <div class="card-header">
+          <h5><i class="fa-duotone fa-memo-circle-info"></i> Fight Details</h5>
+        </div>
+        <div class="card-body">
+          <p>{{ launch?.details }}</p>
+        </div>
+      </div>
+      <hr />
+      <ng-container *ngIf="rocketForLaunch?.id">
+        <h5>
+          <i class="fa-duotone fa-shuttle-space fa-rotate-270"></i> Rocket
+        </h5>
+        <div style="display: flex; justify-content: space-around">
+          <img
+            class="rocket-picture"
+            src="{{ rocketForLaunch?.flickr_images }}"
+            title="{{ rocketForLaunch?.name }}"
+          />
+          <p>{{ rocketForLaunch?.name }}</p>
+          |
+          <p>{{ rocketForLaunch?.height?.meters }} meters</p>
+          |
+          <p>{{ rocketForLaunch?.first_flight | date: "mediumDate" }}</p>
+          |
+          <ng-container *ngIf="rocketForLaunch?.active">
+            <p style="color: #1ea97c">Still active</p>
+          </ng-container>
+          <ng-container *ngIf="!rocketForLaunch?.active">
+            <p style="color: #dc3545">Non active</p>
+          </ng-container>
+          <a target="_blank">
+            <button type="button" class="btn btn-light">details</button>
+          </a>
+        </div>
+      </ng-container>
+      <div *ngIf="launch?.capsules.length > 0" class="card bg-transparent">
+        <div class="card-header">
+          <h5><i class="fa-duotone fa-ufo"></i> Capsules</h5>
+        </div>
+        <div class="card-body">
+          <p>{{ launch?.capsules }}</p>
+        </div>
+      </div>
+      <hr />
+      <div *ngIf="launch?.payloads.length > 0" class="card bg-transparent">
+        <div class="card-header">
+          <h5><i class="fa-duotone fa-cart-flatbed-boxes"></i> Payloads</h5>
+        </div>
+        <div class="card-body">
+          <p>{{ launch?.payloads }}</p>
+        </div>
+      </div>
+    </div>
+
     <div class="col-md-4">
       <ng-container *ngIf="launch?.links?.flickr?.original?.length">
         <img
@@ -49,61 +109,17 @@
         </ul>
       </div>
     </div>
-    <div class="col-md-6">
-      <h1 class="text-center text-info">
-        {{ launch?.name }}
-      </h1>
-      <h6 class="text-center">Flight #{{ launch?.flight_number }}</h6>
-      <div *ngIf="launch?.details" class="card bg-transparent">
-        <div class="card-header">
-          <h5><i class="fa-duotone fa-memo-circle-info"></i> Fight Details</h5>
-        </div>
-        <div class="card-body">
-          <p>{{ launch?.details }}</p>
-        </div>
-      </div>
-
-      <!-- rocket {{ rocket?.id }} launch {{ launch?.rocket }} -->
-      <!-- <ng-container *ngIf="rocket?.id === launch?.rocket">
-        <div *ngIf="launch?.rocket?.length > 0" class="card bg-transparent">
-          <ng-container *ngFor="let roc of rocket">
-            <div class="card-header">
-              <h5>
-                <i class="fa-duotone fa-shuttle-space fa-rotate-270"></i> Rocket
-              </h5>
-            </div>
-            <div class="card-body">
-              <p style="color: red">{{ roc?.name }}</p>
-            </div>
-          </ng-container>
-        </div>
-      </ng-container> -->
-      <div *ngIf="launch?.capsules.length > 0" class="card bg-transparent">
-        <div class="card-header">
-          <h5><i class="fa-duotone fa-ufo"></i> Capsules</h5>
-        </div>
-        <div class="card-body">
-          <p>{{ launch?.capsules }}</p>
-        </div>
-      </div>
-      <div *ngIf="launch?.payloads.length > 0" class="card bg-transparent">
-        <div class="card-header">
-          <h5><i class="fa-duotone fa-cart-flatbed-boxes"></i> Payloads</h5>
-        </div>
-        <div class="card-body">
-          <p>{{ launch?.payloads }}</p>
-        </div>
-      </div>
-    </div>
     <div *ngIf="launch?.crew.length > 0" class="col-md-2">
-      <ng-container *ngFor="let onBoard of crewMembersOnBoard">
+      <ng-container *ngFor="let crewOnBoard of crewOnBoardForLaunch">
         <div class="crew-members-container">
-          <img
-            class="crew-members-picture"
-            src="{{ onBoard?.image }}"
-            title="{{ onBoard?.name }}"
-          />
-          <p>{{ onBoard?.name }}</p>
+          <div>
+            <img
+              class="crew-members-picture"
+              src="{{ crewOnBoard?.image }}"
+              title="{{ crewOnBoard?.name }}"
+            />
+            <p class="crew-name">{{ crewOnBoard?.name }}</p>
+          </div>
         </div>
       </ng-container>
     </div>

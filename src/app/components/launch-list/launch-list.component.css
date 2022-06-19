@@ -28,3 +28,21 @@
 .card-footer {
   display: flex;
 }
+
+.launches-list-table {
+  color: #ffffff;
+  border: 0.5px solid red;
+  padding-right: 15px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.launches-list-table:hover {
+  background-color: #1a1a1a;
+}
+
+.list-table-image {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
