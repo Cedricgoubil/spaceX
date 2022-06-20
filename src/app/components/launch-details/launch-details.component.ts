@@ -9,6 +9,8 @@ import { LaunchDto } from 'src/app/dto/LaunchDto';
 import { RocketDto } from 'src/app/dto/RocketDto';
 import { CapsuleService } from 'src/app/services/capsule.service';
 import { CapsuleDto } from 'src/app/dto/CapsuleDto';
+import { PayloadDto } from 'src/app/dto/PayloadDto';
+import { PayloadService } from 'src/app/services/payload.service';
 
 @Component({
   selector: 'app-launch-details',
@@ -33,13 +35,19 @@ export class LaunchDetailsComponent implements OnInit {
   allSpaceXCapsules?: CapsuleDto[] | any;
   capsulesOnBoardForLaunch?: CapsuleDto[] = [];
 
+  // To get payloads
+  payloadsOnLaunch?: LaunchDto | any;
+  allSpaceXPayloads?: PayloadDto[] | any;
+  payloadsOnBoardForLaunch?: PayloadDto[] = [];
+
   constructor(
     private route: ActivatedRoute,
     private location: Location,
     private launchService: LaunchService,
     private crewService: CrewService,
     private rocketService: RocketService,
-    private capsuleService: CapsuleService
+    private capsuleService: CapsuleService,
+    private payloadService: PayloadService
   ) { }
 
   ngOnInit(): void {
@@ -51,6 +59,8 @@ export class LaunchDetailsComponent implements OnInit {
     this.getRocketForLaunch();
     this.getCapsules();
     this.getCapsulesForLaunch();
+    this.getPayloads();
+    this.getPayloadForLaunch();
   }
 
   getLaunch() {
@@ -97,6 +107,21 @@ export class LaunchDetailsComponent implements OnInit {
       this.capsulesOnLaunch = resultData?.capsules.forEach((item: any) => {
         let capsule = this.allSpaceXCapsules?.filter((itemCapsule: CapsuleDto) => itemCapsule.id === item)
         this.capsulesOnBoardForLaunch?.push(capsule[0])
+      })
+    })
+  }
+
+  getPayloads() {
+    this.payloadService.getAllPayloads().then((resultData) => {
+      this.allSpaceXPayloads = resultData
+    });
+  }
+
+  getPayloadForLaunch() {
+    this.launchService.getLaunch(this.id).then((resultData) => {
+      this.payloadsOnLaunch = resultData?.payloads.forEach((item: any) => {
+        let payload = this.allSpaceXPayloads?.filter((itemPayload: PayloadDto) => itemPayload.id === item)
+        this.payloadsOnBoardForLaunch?.push(payload[0])
       })
     })
   }

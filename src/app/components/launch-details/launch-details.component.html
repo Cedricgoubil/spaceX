@@ -24,64 +24,144 @@
       </div>
       <hr />
       <ng-container *ngIf="rocketForLaunch?.id">
-        <h5>
-          <i class="fa-duotone fa-shuttle-space fa-rotate-270"></i> Rocket
-        </h5>
-        <div style="display: flex; justify-content: space-around">
-          <img
-            class="rocket-picture"
-            src="{{ rocketForLaunch?.flickr_images }}"
-            title="{{ rocketForLaunch?.name }}"
-          />
-          <ng-container *ngIf="rocketForLaunch?.active">
-            <p style="color: #1ea97c">Still active</p>
-          </ng-container>
-          <ng-container *ngIf="!rocketForLaunch?.active">
-            <p style="color: #dc3545">Non active</p>
-          </ng-container>
-          <ul>
-            <li>{{ rocketForLaunch?.name }}</li>
-            <li>{{ rocketForLaunch?.height?.meters }} meters</li>
-            <li>{{ rocketForLaunch?.first_flight | date: "mediumDate" }}</li>
-          </ul>
-          <!-- <a target="_blank">
-            <button type="button" class="btn btn-light">details</button>
-          </a> -->
+        <div class="row">
+          <div class="col-8">
+            <h5>
+              <i class="fa-duotone fa-shuttle-space fa-rotate-270"></i> Rocket
+              <small class="text-muted">{{ rocketForLaunch?.name }} </small>
+            </h5>
+          </div>
+          <div class="col-4">
+            <div class="text-end">
+              <ng-container *ngIf="rocketForLaunch?.active">
+                <p style="color: #1ea97c">Active</p>
+              </ng-container>
+              <ng-container *ngIf="!rocketForLaunch?.active">
+                <p style="color: #dc3545">Non active</p>
+              </ng-container>
+            </div>
+          </div>
+          <div class="col-3">
+            <img
+              class="rocket-picture"
+              src="{{ rocketForLaunch?.flickr_images }}"
+              title="{{ rocketForLaunch?.name }}"
+            />
+          </div>
+          <div class="col-3">
+            <p>
+              Height<br />
+              <small class="text-muted"
+                >{{ rocketForLaunch?.height?.meters }} meters</small
+              >
+            </p>
+          </div>
+          <div class="col-3">
+            <p>
+              First flight <br />
+              <small class="text-muted">
+                {{ rocketForLaunch?.first_flight | date: "mediumDate" }}
+              </small>
+            </p>
+          </div>
+          <div class="col-3">
+            <a target="_blank">
+              <div type="button" title="more details">
+                <i class="fa-thin fa-up-right-from-square"></i>
+              </div>
+            </a>
+          </div>
         </div>
       </ng-container>
       <hr />
       <ng-container *ngFor="let capsulesOnBoard of capsulesOnBoardForLaunch">
         <ng-container *ngIf="capsulesOnBoard?.id">
-          <h5><i class="fa-duotone fa-ufo"></i> Capsules</h5>
-          <div style="display: flex; justify-content: space-around">
-            <ng-container *ngIf="capsulesOnBoard?.status === 'active'">
-              <p style="color: #1ea97c">Active</p>
-            </ng-container>
-            <ng-container *ngIf="capsulesOnBoard?.status === 'retired'">
-              <p style="color: #dc3545">Retired</p>
-            </ng-container>
-            <ng-container *ngIf="capsulesOnBoard?.status === 'unknown'">
-              <p style="color: #0dcaf0">Retired</p>
-            </ng-container>
-            <ul>
-              <li>Type: {{ capsulesOnBoard?.type }}</li>
-              <li>Serial: {{ capsulesOnBoard?.serial }}</li>
-              <li>{{ capsulesOnBoard?.last_update }}</li>
-            </ul>
+          <div class="row">
+            <div class="col-8">
+              <h5>
+                <i class="fa-duotone fa-ufo"></i> Capsules
+                <small class="text-muted">{{ capsulesOnBoard?.type }} </small>
+              </h5>
+            </div>
+            <div class="col-4">
+              <div class="text-end">
+                <ng-container *ngIf="capsulesOnBoard?.status === 'active'">
+                  <p style="color: #1ea97c">Active</p>
+                </ng-container>
+                <ng-container *ngIf="capsulesOnBoard?.status === 'retired'">
+                  <p style="color: #dc3545">Retired</p>
+                </ng-container>
+                <ng-container *ngIf="capsulesOnBoard?.status === 'unknown'">
+                  <p style="color: #0dcaf0">Retired</p>
+                </ng-container>
+              </div>
+            </div>
+            <div class="offset-3 col-3">
+              <p>
+                Serial <br />
+                <small class="text-muted">
+                  {{ capsulesOnBoard?.serial }}
+                </small>
+              </p>
+            </div>
+            <div class="col-3">
+              <p>
+                Last update <br />
+                <small class="text-muted">
+                  {{ capsulesOnBoard?.last_update }}
+                </small>
+              </p>
+            </div>
           </div>
         </ng-container>
       </ng-container>
-      <!-- <hr />
-      <div *ngIf="launch?.payloads.length > 0" class="card bg-transparent">
-        <div class="card-header">
-          <h5><i class="fa-duotone fa-cart-flatbed-boxes"></i> Payloads</h5>
-        </div>
-        <div class="card-body">
-          <p>{{ launch?.payloads }}</p>
-        </div>
-      </div> -->
+      <hr />
+      <ng-container *ngFor="let payloadsOnBoard of payloadsOnBoardForLaunch">
+        <ng-container *ngIf="payloadsOnBoard?.id">
+          <div class="row">
+            <div class="col-8">
+              <h5>
+                <i class="fa-duotone fa-ufo"></i> Payloads
+                <small class="text-muted">{{ payloadsOnBoard?.name }} </small>
+              </h5>
+            </div>
+            <div class="col-4">
+              <div class="text-end">
+                <ng-container *ngIf="payloadsOnBoard?.reused">
+                  <p style="color: #1ea97c">Reused</p>
+                </ng-container>
+                <ng-container *ngIf="payloadsOnBoard?.reused">
+                  <p style="color: #dc3545">Not-reused</p>
+                </ng-container>
+              </div>
+            </div>
+            <div class="offset-3 col-3">
+              <p>
+                Type <br />
+                <small class="text-muted">
+                  {{ payloadsOnBoard?.type }}
+                </small>
+              </p>
+            </div>
+            <div class="col-3">
+              <p>
+                Customers <br />
+                <small class="text-muted">
+                  {{ payloadsOnBoard?.customers }}
+                </small>
+              </p>
+            </div>
+            <div class="col-3">
+              <a target="_blank">
+                <div type="button" title="more details">
+                  <i class="fa-thin fa-up-right-from-square"></i>
+                </div>
+              </a>
+            </div>
+          </div>
+        </ng-container>
+      </ng-container>
     </div>
-
     <div class="col-md-4">
       <ng-container *ngIf="launch?.links?.flickr?.original?.length">
         <img
@@ -90,7 +170,6 @@
           title="{{ launch?.name | titlecase }}"
           onError="this.src='/assets/img/spacex-noimage.jpg';"
       /></ng-container>
-
       <ng-container
         *ngIf="
           launch?.links?.patch?.large &&
