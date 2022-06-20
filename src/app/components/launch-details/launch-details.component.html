@@ -33,32 +33,45 @@
             src="{{ rocketForLaunch?.flickr_images }}"
             title="{{ rocketForLaunch?.name }}"
           />
-          <p>{{ rocketForLaunch?.name }}</p>
-          |
-          <p>{{ rocketForLaunch?.height?.meters }} meters</p>
-          |
-          <p>{{ rocketForLaunch?.first_flight | date: "mediumDate" }}</p>
-          |
           <ng-container *ngIf="rocketForLaunch?.active">
             <p style="color: #1ea97c">Still active</p>
           </ng-container>
           <ng-container *ngIf="!rocketForLaunch?.active">
             <p style="color: #dc3545">Non active</p>
           </ng-container>
-          <a target="_blank">
+          <ul>
+            <li>{{ rocketForLaunch?.name }}</li>
+            <li>{{ rocketForLaunch?.height?.meters }} meters</li>
+            <li>{{ rocketForLaunch?.first_flight | date: "mediumDate" }}</li>
+          </ul>
+          <!-- <a target="_blank">
             <button type="button" class="btn btn-light">details</button>
-          </a>
+          </a> -->
         </div>
       </ng-container>
-      <div *ngIf="launch?.capsules.length > 0" class="card bg-transparent">
-        <div class="card-header">
-          <h5><i class="fa-duotone fa-ufo"></i> Capsules</h5>
-        </div>
-        <div class="card-body">
-          <p>{{ launch?.capsules }}</p>
-        </div>
-      </div>
       <hr />
+      <ng-container *ngFor="let capsulesOnBoard of capsulesOnBoardForLaunch">
+        <ng-container *ngIf="capsulesOnBoard?.id">
+          <h5><i class="fa-duotone fa-ufo"></i> Capsules</h5>
+          <div style="display: flex; justify-content: space-around">
+            <ng-container *ngIf="capsulesOnBoard?.status === 'active'">
+              <p style="color: #1ea97c">Active</p>
+            </ng-container>
+            <ng-container *ngIf="capsulesOnBoard?.status === 'retired'">
+              <p style="color: #dc3545">Retired</p>
+            </ng-container>
+            <ng-container *ngIf="capsulesOnBoard?.status === 'unknown'">
+              <p style="color: #0dcaf0">Retired</p>
+            </ng-container>
+            <ul>
+              <li>Type: {{ capsulesOnBoard?.type }}</li>
+              <li>Serial: {{ capsulesOnBoard?.serial }}</li>
+              <li>{{ capsulesOnBoard?.last_update }}</li>
+            </ul>
+          </div>
+        </ng-container>
+      </ng-container>
+      <!-- <hr />
       <div *ngIf="launch?.payloads.length > 0" class="card bg-transparent">
         <div class="card-header">
           <h5><i class="fa-duotone fa-cart-flatbed-boxes"></i> Payloads</h5>
@@ -66,7 +79,7 @@
         <div class="card-body">
           <p>{{ launch?.payloads }}</p>
         </div>
-      </div>
+      </div> -->
     </div>
 
     <div class="col-md-4">

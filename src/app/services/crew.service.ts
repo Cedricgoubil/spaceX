@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { CrewDto } from '../components/dto/CrewDto';
+import { CrewDto } from '../dto/CrewDto';
 
 @Injectable({
   providedIn: 'root'

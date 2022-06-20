@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
+import { LaunchDto } from 'src/app/dto/LaunchDto';
 import { LaunchService } from 'src/app/services/launch.service';
-import { LaunchDto } from '../dto/launchdto';
+
 
 @Component({
   selector: 'app-launch-list',

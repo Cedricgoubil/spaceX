@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UpcomingLaunchDto } from 'src/app/dto/UpcomingLaunchDto';
 import { UpcomingLauchService } from 'src/app/services/upcominglaunch.service';
-import { UpcomingLaunchDto } from '../dto/UpcomingLaunchDto';
+
 
 @Component({
   selector: 'app-upcominglaunch-list',

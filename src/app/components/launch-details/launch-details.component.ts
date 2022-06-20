@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
-import { LaunchDto } from '../dto/launchdto';
 import { LaunchService } from 'src/app/services/launch.service';
 import { CrewService } from 'src/app/services/crew.service';
-import { CrewDto } from '../dto/CrewDto';
 import { RocketService } from 'src/app/services/rocket.service';
-import { RocketDto } from '../dto/RocketDto';
+import { CrewDto } from 'src/app/dto/CrewDto';
+import { LaunchDto } from 'src/app/dto/LaunchDto';
+import { RocketDto } from 'src/app/dto/RocketDto';
+import { CapsuleService } from 'src/app/services/capsule.service';
+import { CapsuleDto } from 'src/app/dto/CapsuleDto';
 
 @Component({
   selector: 'app-launch-details',
@@ -25,14 +27,19 @@ export class LaunchDetailsComponent implements OnInit {
   // To get rockets
   rockets?: RocketDto | any;
   rocketForLaunch?: RocketDto | any;
-  // rocketId?: string | any;
+
+  // To get capsules
+  capsulesOnLaunch?: LaunchDto | any;
+  allSpaceXCapsules?: CapsuleDto[] | any;
+  capsulesOnBoardForLaunch?: CapsuleDto[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private location: Location,
     private launchService: LaunchService,
     private crewService: CrewService,
-    private rocketService: RocketService
+    private rocketService: RocketService,
+    private capsuleService: CapsuleService
   ) { }
 
   ngOnInit(): void {
@@ -42,6 +49,8 @@ export class LaunchDetailsComponent implements OnInit {
     this.getFlyingCrewForLaunch();
     this.getRockets();
     this.getRocketForLaunch();
+    this.getCapsules();
+    this.getCapsulesForLaunch();
   }
 
   getLaunch() {
@@ -75,6 +84,21 @@ export class LaunchDetailsComponent implements OnInit {
     this.launchService.getLaunch(this.id).then((resultData) => {
       this.rocketForLaunch = this.rockets?.find((item: RocketDto) => item.id === resultData?.rocket)
     });
+  }
+
+  getCapsules() {
+    this.capsuleService.getAllCapsules().then((resultData) => {
+      this.allSpaceXCapsules = resultData
+    });
+  }
+
+  getCapsulesForLaunch() {
+    this.launchService.getLaunch(this.id).then((resultData) => {
+      this.capsulesOnLaunch = resultData?.capsules.forEach((item: any) => {
+        let capsule = this.allSpaceXCapsules?.filter((itemCapsule: CapsuleDto) => itemCapsule.id === item)
+        this.capsulesOnBoardForLaunch?.push(capsule[0])
+      })
+    })
   }
 
   navigateBack(): void {

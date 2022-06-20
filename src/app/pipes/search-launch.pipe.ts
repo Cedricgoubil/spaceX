@@ -1,12 +1,13 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { pipe } from 'rxjs';
-import { CrewDto } from '../components/dto/CrewDto';
+import { LaunchDto } from '../dto/LaunchDto';
+
 
 @Pipe({
   name: 'searchlaunch'
 })
 export class SearchLaunchFilterPipe implements PipeTransform {
-  transform(searchLaunchFilterTransform: CrewDto[], searchTerm: string) {
+  transform(searchLaunchFilterTransform: LaunchDto[], searchTerm: string) {
     if (!searchLaunchFilterTransform || !searchTerm) {
       return searchLaunchFilterTransform;
     }

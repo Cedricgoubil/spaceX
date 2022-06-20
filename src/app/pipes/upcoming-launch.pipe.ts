@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { LaunchDto } from '../components/dto/launchdto';
+import { LaunchDto } from '../dto/LaunchDto';
+
 
 @Pipe({
   name: 'upcominglaunch'

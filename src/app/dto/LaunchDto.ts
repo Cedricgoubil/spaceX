@@ -49,7 +49,7 @@ export class LaunchDto {
   details?: string;
   crew?: string[] | any;
   ships?: string[];
-  capsules?: string[];
+  capsules?: string[] | any;
   payloads?: string[];
 
   launchpad?: string;

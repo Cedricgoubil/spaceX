@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CrewService } from 'src/app/services/crew.service';
-import { CrewDto } from '../dto/CrewDto';
+import { CrewDto } from '../../dto/CrewDto';
 
 @Component({
   selector: 'app-crew-list',

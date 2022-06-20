@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DragonService } from 'src/app/services/dragon.service';
-import { DragonDto } from '../dto/DragonDto';
+import { DragonDto } from '../../dto/DragonDto';
 
 @Component({
   selector: 'app-dragons-list',

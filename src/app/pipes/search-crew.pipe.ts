@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { pipe } from 'rxjs';
-import { CrewDto } from '../components/dto/CrewDto';
+import { CrewDto } from '../dto/CrewDto';
 
 @Pipe({
   name: 'searchcrew'

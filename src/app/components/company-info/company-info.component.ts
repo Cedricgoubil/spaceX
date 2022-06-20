@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CompanyService } from 'src/app/services/company.service';
-import { CompanyDto } from '../dto/CompanyDto';
+import { CompanyDto } from '../../dto/CompanyDto';
 
 @Component({
   selector: 'app-company-info',

@@ -29,7 +29,7 @@
       <div *ngIf="allCrewMembers?.length > 0; else listIsLoading">
         <div class="row row-cols-1 row-cols-md-3">
           <div
-            *ngFor="let crewMember of allCrewMembers | searchlaunch: searchTerm"
+            *ngFor="let crewMember of allCrewMembers | searchcrew: searchTerm"
           >
             <div
               routerLink="/crewMember-details/{{ crewMember?.id }}"
