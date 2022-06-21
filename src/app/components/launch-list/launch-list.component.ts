@@ -1,6 +1,8 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { LaunchDto } from 'src/app/dto/LaunchDto';
+import { UpcomingLaunchDto } from 'src/app/dto/UpcomingLaunchDto';
 import { LaunchService } from 'src/app/services/launch.service';
+import { UpcomingLauchService } from 'src/app/services/upcominglaunch.service';
 
 
 @Component({
@@ -10,6 +12,7 @@ import { LaunchService } from 'src/app/services/launch.service';
 })
 export class LaunchListComponent implements OnInit {
   allLaunches!: LaunchDto[] | any;
+  allUpcomingLaunches!: UpcomingLaunchDto[] | any;
   isSucceed?: boolean | any;
   isFailed?: boolean | any;
   isUpcoming?: boolean | any;
@@ -20,17 +23,25 @@ export class LaunchListComponent implements OnInit {
   loading?: boolean | any;
 
   constructor(
-    private launchService: LaunchService
+    private launchService: LaunchService,
+    private upcomingLauchService: UpcomingLauchService
   ) { }
 
   ngOnInit(): void {
-    this.getLaunches()
+    this.getLaunches();
+    this.getUpcomingLaunches();
   }
 
   getLaunches() {
     this.launchService.getAllLaunch().then((resultData) => {
       resultData.reverse();
       this.allLaunches = resultData;
+    })
+  }
+
+  getUpcomingLaunches() {
+    this.upcomingLauchService.getAllUpcomingLaunch().then((resultData) => {
+      this.allUpcomingLaunches = resultData;
     })
   }
 
@@ -68,13 +79,6 @@ export class LaunchListComponent implements OnInit {
     this.searchTerm = '';
   }
 
-  resetListToFirstPage() {
-    this.firstPage = 1;
-  }
-
-  clearList() {
-  }
-
   getMissionStatus(status: any) {
     switch (status) {
       case true:
@@ -93,21 +97,21 @@ export class LaunchListComponent implements OnInit {
     number = this.numberOfCard;
   }
 
-  onScrollingFinished() {
-    this.loadMore();
-  }
+  // onScrollingFinished() {
+  //   this.loadMore();
+  // }
 
-  loadMore() {
-    this.numberOfCard += 9
-    console.log('loading more')
-    if (!this.loading) {
-      this.loading = true;
-      debugger
-      setTimeout(() => {
-        this.initAmountOfCards(this.numberOfCard)
-        this.loading = false;
-        debugger
-      }, 500);
-    }
-  }
+  // loadMore() {
+  //   this.numberOfCard += 9
+  //   console.log('loading more')
+  //   if (!this.loading) {
+  //     this.loading = true;
+  //     debugger
+  //     setTimeout(() => {
+  //       this.initAmountOfCards(this.numberOfCard)
+  //       this.loading = false;
+  //       debugger
+  //     }, 500);
+  //   }
+  // }
 }

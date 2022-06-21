@@ -26,11 +26,4 @@ export class CrewListComponent implements OnInit {
   clearInput() {
     this.searchTerm = '';
   }
-
-  resetListToFirstPage() {
-    this.firstPage = 1;
-  }
-
-  clearList() {
-  }
 }

@@ -11,7 +11,6 @@
           type="text"
           placeholder="Search for launch (ex: Inspiration)"
           [(ngModel)]="searchTerm"
-          (keyup)="resetListToFirstPage()"
         />
         <button
           class="btn bg-transparent"
@@ -82,20 +81,63 @@
         No Launch found!
       </h2>
     </div>
+    <div *ngIf="isUpcoming">
+      <div class="row row-cols-1 row-cols-md-3">
+        <div
+          *ngFor="
+            let upcomingLaunch of allUpcomingLaunches
+              | upcominglaunch: isUpcoming
+          "
+        >
+          <div
+            class="card text-white bg-transparent my-2"
+            [ngStyle]="{
+              'border-color': getMissionStatus(upcomingLaunch?.success)
+            }"
+          >
+            <div class="card-img-overlay">
+              <div style="display: flex; justify-content: flex-end">
+                <ng-container *ngIf="upcomingLaunch?.upcoming">
+                  <p style="color: #696cff">Upcoming</p>
+                </ng-container>
+              </div>
+            </div>
+            <br />
+            <img
+              class="card-img-top"
+              src="{{ upcomingLaunch?.links?.patch?.large }}"
+              alt="{{ upcomingLaunch?.name }}"
+              onError="this.src='/assets/img/spacex-noimage.jpg';"
+            />
+            <div class="card-body">
+              <h3 class="card-title">{{ upcomingLaunch?.name }}</h3>
+              <h6 class="card-text text-end">
+                <i class="fa-duotone fa-shuttle-space fa-rotate-270"></i>
+                Flight # {{ upcomingLaunch?.flight_number }}
+              </h6>
+            </div>
+            <div class="card-footer">
+              <div class="text-start">
+                <p>
+                  <i class="fa-duotone fa-calendar-days"></i>
+                  {{ upcomingLaunch?.date_utc | date: "mediumDate" }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div *ngIf="allLaunches?.length > 0; else listIsLoading">
-      <div
-        class="row row-cols-1 row-cols-md-3"
-        (scrollingFinished)="onScrollingFinished()"
-      >
+      <div class="row row-cols-1 row-cols-md-3">
         <div
           *ngFor="
             let launch of allLaunches
+              | passedlaunch
               | searchlaunch: searchTerm
               | succeedlaunch: isSucceed
               | failedlaunch: isFailed
-              | upcominglaunch: isUpcoming
           "
-          (scrollingFinished)="onScrollingFinished()"
         >
           <div
             routerLink="/launch-details/{{ launch?.id }}"

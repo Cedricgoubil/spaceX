@@ -38,6 +38,7 @@ import { ResetpasswordComponent } from './components/resetpassword/resetpassword
 // Pipes
 import { SucceedLaunchFilterPipe } from './pipes/succeed-launch.pipe';
 import { FailedLaunchFilterPipe } from './pipes/failed-launch.pipe';
+import { PassedLaunchFilterPipe } from './pipes/passed-launch.pipe';
 import { UpcomingLaunchFilterPipe } from './pipes/upcoming-launch.pipe';
 import { SearchLaunchFilterPipe } from './pipes/search-launch.pipe';
 import { SearchCrewFilterPipe } from './pipes/search-crew.pipe';
@@ -69,6 +70,7 @@ import { SpacexLiveComponent } from './components/spacex-live/spacex-live.compon
     ResetpasswordComponent,
     SucceedLaunchFilterPipe,
     FailedLaunchFilterPipe,
+    PassedLaunchFilterPipe,
     UpcomingLaunchFilterPipe,
     SearchLaunchFilterPipe,
     SearchCrewFilterPipe,
