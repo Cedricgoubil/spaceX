@@ -128,20 +128,18 @@
               onError="this.src='/assets/img/spacex-noimage.jpg';"
             />
             <div class="card-body">
-              <h5 class="card-title text-end">{{ launch?.name }}</h5>
-              <h6 class="card-text">
+              <h3 class="card-title">{{ launch?.name }}</h3>
+              <h6 class="card-text text-end">
                 <i class="fa-duotone fa-shuttle-space fa-rotate-270"></i>
                 Flight # {{ launch?.flight_number }}
               </h6>
-              <!-- ! Loop through rockets and get name -->
-              <!-- <h6 class="card-text">
-                Rocket <small class="text-muted">{{ launch?.rocket }}</small>
-              </h6> -->
             </div>
             <div class="card-footer">
-              <div class="text-muted">
-                <i class="fa-duotone fa-calendar-days"></i>
-                {{ launch?.date_utc | date: "mediumDate" }}
+              <div class="text-start">
+                <p>
+                  <i class="fa-duotone fa-calendar-days"></i>
+                  {{ launch?.date_utc | date: "mediumDate" }}
+                </p>
               </div>
             </div>
           </div>

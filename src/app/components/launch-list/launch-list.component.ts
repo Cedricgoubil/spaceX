@@ -29,7 +29,8 @@ export class LaunchListComponent implements OnInit {
 
   getLaunches() {
     this.launchService.getAllLaunch().then((resultData) => {
-      this.allLaunches = resultData
+      resultData.reverse();
+      this.allLaunches = resultData;
     })
   }
 
