@@ -4,6 +4,7 @@ import { DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxSimpleCountdownModule } from 'ngx-simple-countdown';
+import { YouTubePlayerModule } from '@angular/youtube-player';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -48,7 +49,6 @@ import { SearchCrewFilterPipe } from './pipes/search-crew.pipe';
 import { ScrollTrackerDirective } from './directives/scroll-tracker.directive';
 import { SpacexLiveComponent } from './components/spacex-live/spacex-live.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -88,7 +88,8 @@ import { SpacexLiveComponent } from './components/spacex-live/spacex-live.compon
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),
     provideStorage(() => getStorage()),
-    NgxSimpleCountdownModule
+    NgxSimpleCountdownModule,
+    YouTubePlayerModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

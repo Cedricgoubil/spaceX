@@ -106,5 +106,7 @@
       }
     }
   },
-  "defaultProject": "spaceX"
+  "cli": {
+    "analytics": false
+  }
 }

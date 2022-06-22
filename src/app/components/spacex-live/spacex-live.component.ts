@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { LaunchDto } from 'src/app/dto/LaunchDto';
+import { UpcomingLaunchDto } from 'src/app/dto/UpcomingLaunchDto';
 
 @Component({
   selector: 'app-spacex-live',
@@ -6,7 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./spacex-live.component.css']
 })
 export class SpacexLiveComponent implements OnInit {
-  // @Input() spaceXLaunchLiveYouTube?: LaunchDto | any; Not in use
+  @Input() videoId?: string;
+  @Input() spaceXLaunchLiveYouTube?: string | any;
 
   constructor() { }
 

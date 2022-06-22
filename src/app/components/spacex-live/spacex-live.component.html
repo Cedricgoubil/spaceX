@@ -1,8 +1,16 @@
+<!-- <div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 mt-5">
+      <youtube-player [videoId]="videoId"></youtube-player>
+    </div>
+  </div>
+</div> -->
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-12 mt-5">
       <iframe
-        src="https://www.youtube.com/embed/watch?v=oCN-BMU9-hM?autoplay=1"
+        [src]="spaceXLaunchLiveYouTube | youtubelink"
         width="100%"
         height="200"
         frameborder="0"
@@ -13,5 +21,3 @@
     </div>
   </div>
 </div>
-
-<!-- [src]="spaceXLaunchLiveYouTube | youtubelink" -->
